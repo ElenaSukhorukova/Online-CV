@@ -1,0 +1,15 @@
+<%= simple_form_for experience, url: url, method: method do |f| %>
+  <%= f.input :employer %><br />
+  <%= f.input :position %><br />
+  <%= f.label :date_of_begin %>
+  <%= f.date_field :date_of_begin, class: "form-control" %><br />
+  <%= f.label :date_of_end %>
+  <%= f.date_field :date_of_end, class: "form-control" %><br />
+  <%= f.input :description %><br />
+  <%= f.label :locale %><br />
+  <% Experience::VALID_LOCALES.each do |item| %>
+        <%= f.radio_button :locale, item , class: ' input-validation-error' %> <%= item %>
+      <% end %><br /><br />
+  <%= f.button :submit, submit, class: "btn btn-light" %>
+  <%= render 'shared/cancel_button' if f.object.persisted? %>
+<% end %>

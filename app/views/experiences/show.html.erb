@@ -1,0 +1,9 @@
+<p>
+  <b><i><%= attribute_model(@experience, :employer) %> </i></b><%= @experience.employer %><br />
+  <b><i><%= attribute_model(@experience, :position) %> </i></b><%= @experience.position %><br />
+  <b><i><%= attribute_model(@experience, :date_of_begin) %> </i></b><%= I18n.l(@experience.date_of_begin, format: '%B %Y') %><br />
+  <b><i><%= attribute_model(@experience, :date_of_end) %> </i></b>
+   <%= @experience.date_of_end.blank? ? t('page.blank_yaer_ending_experience') : I18n.l(@experience.date_of_end, format: '%B %Y') %><br />
+
+  <b><i><%= attribute_model(@experience, :description) %> </i></b><br /><%= simple_format(@experience.description) %><br />
+</p>
