@@ -1,0 +1,20 @@
+<%= link_to t('link.add_new', model: i18n_model_name(@contact).singularize.downcase), new_user_contact_path(@user) %>
+<%= link_to 'All contacts', contacts_path %>
+<br />
+<%= link_to t('link.add_new', model: i18n_model_name(@course).singularize.downcase), new_user_course_path(@user) %>
+<%= link_to 'All courses', courses_path %>
+<br />
+<%= link_to t('link.add_new', model: i18n_model_name(@education).singularize.downcase), new_user_education_path(@user) %>
+<%= link_to 'All educations', educations_path %>
+<br />
+<%= link_to t('link.add_new', model: i18n_model_name(@experience).singularize.downcase), new_user_experience_path(@user) %>
+<%= link_to 'All experience', experiences_path %> 
+<br />
+<%= link_to t('link.add_new', model: i18n_model_name(@personal_detail).singularize.downcase), new_user_personal_detail_path(@user) %>
+<%= link_to 'All personal details', personal_details_path %> 
+<br />
+<%= link_to t('link.add_new', model: i18n_model_name(@project).singularize.downcase), new_user_project_path(@user) %>
+<%= link_to 'All projects', projects_path %> 
+<br />
+<%= link_to t('link.add_new', model: i18n_model_name(@skill).singularize.downcase), new_user_skill_path(@user) %>
+<%= link_to 'All skills', skills_path %>
