@@ -1,0 +1,12 @@
+<%= simple_form_for education, url: url, method: method do |f| %>
+  <%= f.input :name_organization %><br />
+  <%= f.input :degree %><br />
+  <%= f.input :field_of_study %><br />
+  <%= f.input :date_of_end %><br />
+  <%= f.label :locale %><br />
+  <% Education::VALID_LOCALES.each do |item| %>
+        <%= f.radio_button :locale, item , class: ' input-validation-error' %> <%= item %>
+      <% end %><br /><br />
+  <%= f.button :submit, submit, class: "btn btn-light" %>
+  <%= render 'shared/cancel_button' if f.object.persisted? %>
+<% end %>
