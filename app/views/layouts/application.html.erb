@@ -11,9 +11,29 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
-    <%= yield %>
+    <%= render 'layouts/header'%>
+    <main>   
+      <% flash.each do |type, msg| %>    
+        <!-- Change flash messages of devise to bootstrap format -->
+        <% case type %>
+          <% when 'alert'%>
+            <% type = 'danger' %>
+          <% when 'notice' %>
+            <% type = 'success' %>
+          <% end %>
+                  
+        <div 
+          class="alert alert-<%= type %> flash__message" ,
+          role="alert", 
+          data-controller="removals", 
+          data-action="animationend->removals#remove">
+        
+            <p class='text-center'><%= msg %></p>
+        
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </main>
   </body>
 </html>
