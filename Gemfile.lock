@@ -94,6 +94,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.10.2)
+      devise (>= 4.8.0)
     erubi (1.11.0)
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
@@ -105,7 +107,7 @@ GEM
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.5.11)
-    irb (1.4.3)
+    irb (1.5.0)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -232,6 +234,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  devise-i18n
   figaro
   importmap-rails
   jbuilder
@@ -250,7 +253,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.0.0p0
+   ruby 3.0.2p107
 
 BUNDLED WITH
    2.3.26
