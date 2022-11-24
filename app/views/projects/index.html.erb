@@ -1,0 +1,21 @@
+<% if @projects.try(:any?) %>
+  <% @projects.each do |project| %>
+    <%= project.title %>
+    <%= project.site %>
+    <%= project.github %>
+    <%= project.description %>
+    <%# if project.previews.attached? %>
+      <%# project.previews.each do |img| %>
+      <%# <div class='img_block'> %>
+        <%#= image_tag img, class: "d-block img" %>
+      <%# </div> %>
+      <%# end %>
+  <%# end %>
+    <%= project.locale %>
+
+    <%= link_to t('link.show', model: i18n_model_name(project).downcase), project_path(project) %>
+    <%= link_to t('link.edit', model: i18n_model_name(project).downcase), edit_project_path(project) %>
+    <%= button_to t('submit.delete', model: i18n_model_name(project).downcase), project_path(project), 
+      method: :delete, class: "btn btn-light", :onclick => "return confirm('Are you sure?')", :remote => true %>  
+  <% end %>
+<% end %>

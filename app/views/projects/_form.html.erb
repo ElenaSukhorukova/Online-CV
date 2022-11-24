@@ -1,0 +1,13 @@
+<%= simple_form_for project, url: url, method: method, multiple: true do |f| %>
+  <%= f.input :title%><br />
+  <%#= f.file_field :previews, multiple: true, class:"form-control", id: "formFile" %><br />
+  <%= f.input :site %><br />
+  <%= f.input :github %><br />
+  <%= f.input :description %><br />
+  <%= f.label :locale %><br />
+  <% Project::VALID_LOCALES.each do |item| %>
+        <%= f.radio_button :locale, item , class: ' input-validation-error' %> <%= item %>
+      <% end %><br /><br />
+  <%= f.button :submit, submit, class: "btn btn-light" %>
+  <%= render 'shared/cancel_button' if f.object.persisted? %>
+<% end %> 
