@@ -1,0 +1,14 @@
+<%= simple_form_for contact, url: url, method: method do |f| %>
+  <%= f.input :address %><br />
+  <%= f.input :email %><br />
+  <%= f.input :phone %><br />
+  <%= f.input :linkedin %><br />
+  <%= f.input :github %><br />
+  <%= f.input :telegram %><br />
+  <%= f.label :locale %><br />
+  <% Contact::VALID_LOCALES.each do |item| %>
+        <%= f.radio_button :locale, item, class: 'input-validation-error' %> <%= item %>
+      <% end %><br /><br />
+  <%= f.button :submit, submit, class: "btn btn-light" %>
+  <%= render 'shared/cancel_button' if f.object.persisted? %>
+<% end %>
