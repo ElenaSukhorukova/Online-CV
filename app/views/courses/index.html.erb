@@ -1,0 +1,13 @@
+<% if @courses.try(:any?) %>
+  <% @courses.each do |course| %>
+    <%= course.coursename %>
+    <%= course.description %>
+    <%= course.date_of_end.strftime('%Y') %>
+    <%= course.locale %>
+
+    <%= link_to t('link.show', model: i18n_model_name(course).downcase), course_path(course) %>
+    <%= link_to t('link.edit', model: i18n_model_name(course).downcase), edit_course_path(course) %>
+    <%= button_to t('submit.delete', model: i18n_model_name(course).downcase), course_path(course), 
+      method: :delete, class: "btn btn-light", :onclick => "return confirm('Are you sure?')", :remote => true %>  
+  <% end %>
+<% end %>

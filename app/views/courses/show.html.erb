@@ -1,0 +1,5 @@
+<p>
+  <b><i><%= attribute_model(@course, :coursename) %> </i></b><%= @course.coursename %><br />
+  <b><i><%= attribute_model(@course, :description) %> </i></b><%= simple_format(@course.description) %>
+  <b><i><%= attribute_model(@course, :date_of_end) %> </i></b><%= @course.date_of_end.strftime('%Y') %>
+</p>

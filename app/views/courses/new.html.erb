@@ -1,0 +1,4 @@
+<h1><%= t('page.new_one', model: i18n_model_name(@course).downcase) %></h1>
+
+<%= render partial: 'form',  locals: { course: @course, method: :post, 
+  url: user_courses_path(@user), submit: t('submit.create_one', model: i18n_model_name(@course).downcase) } %>
