@@ -4,7 +4,7 @@ class CreateEducations < ActiveRecord::Migration[7.0]
       t.string :name_organization
       t.string :degree
       t.text :field_of_study
-      t.date :data_of_end
+      t.date :date_of_end
       t.string :locale
       t.belongs_to :user, foreign_key: true
       

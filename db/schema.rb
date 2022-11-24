@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_20_105526) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_23_185110) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_105526) do
   create_table "courses", force: :cascade do |t|
     t.string "coursename"
     t.text "description"
-    t.date "data_of_end"
+    t.date "date_of_end"
     t.string "locale"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_105526) do
     t.string "name_organization"
     t.string "degree"
     t.text "field_of_study"
-    t.date "data_of_end"
+    t.date "date_of_end"
     t.string "locale"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -106,6 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_105526) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "locale", default: "en"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
