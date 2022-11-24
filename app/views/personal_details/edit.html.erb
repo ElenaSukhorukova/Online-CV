@@ -1,0 +1,4 @@
+<h1><%= t('page.edit', model: i18n_model_name(@personal_detail)) %></h1>
+
+<%= render partial: 'form', locals: { personal_detail: @personal_detail, method: :put, 
+  url: personal_detail_path(@personal_detail), submit: t('submit.edit', model: i18n_model_name(@personal_detail).downcase) } %>
