@@ -1,4 +1,9 @@
-<h1><%= t('page.new_many', model: i18n_model_name(@education).downcase) %></h1>
+<%= turbo_frame_tag dom_id(@education) do %>
+  <div class='my-4 mx-4'>
+    <%= render 'shared/go_back_button' %>
+    <h3 class='md-4'><%= t('page.new_many', model: i18n_model_name(@education).downcase) %></h3>
+    <%= render partial: 'form',  locals: { education: @education, method: :post, 
+      url: user_educations_path(@user), submit: t('submit.create_one', model: i18n_model_name(@education).downcase) } %>
+  </div>
+<% end %>
 
-<%= render partial: 'form',  locals: { education: @education, method: :post, 
-  url: user_educations_path(@user), submit: t('submit.create_one', model: i18n_model_name(@education).downcase) } %>
