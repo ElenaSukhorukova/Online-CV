@@ -1,2 +1,79 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<section>
+  <%= render 'home/title' %>
+  <div class='container mt-3'>
+    <div class='row'>  
+      <div class="col-8">
+        <section class='row'>
+          <div class="col p-3 border bg-light main_body card">
+            <div class='card-body'>
+              <h3 class='card-title'><%= i18n_model_name(@experiences) %></h3>
+              <div class='card-text'>
+                <%= render 'home/experience' %>
+              </div>
+            </div>
+          <div>
+        </section>
+        <section class='row'>
+        <div class="col p-3 border bg-light main_body card">
+            <div class='card-body'>
+              <h3 class='card-title'><%= i18n_model_name(@educations) %></h3>
+              <div class='card-text'>
+                <%= render 'home/education' %>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class='row'>
+          <div class="col p-3 border bg-light main_body card">
+            <div class='card-body'>
+              <h3 class='card-title'><%= i18n_model_name(@projects, count: 2) %></h3>
+              <div class='card-text'>
+                <%= render 'home/projects' %>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class='row'>
+          <div class="col p-3 border bg-light main_body card">
+            <div class='card-body'>
+              <h3 class='card-title'><%= attribute_model(@personal_details, :about) %></h3>
+              <div class='card-text'>
+                <%= render 'home/about' %>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-4">
+        <section class='row'>
+          <div class="col p-3 border bg-light main_body card">
+            <div class='card-text'>
+              <%= render 'home/contacts' %>
+            </div>
+          </div>
+        </section>
+        <section class='row'>
+          <div class="col p-3 border bg-light main_body card">
+            <div class='card-body'>
+              <h3 class='card-title'><%= i18n_model_name(@skills, count: 2) %></h3>
+              <div class='card-text'>
+                <%= render 'home/skill' %>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class='row'>
+          <div class="col p-3 border bg-light main_body card">
+            <div class='card-body'>
+              <h3 class='card-title'><%= i18n_model_name(@courses, count: 2) %></h3>
+              <div class='card-text'>
+                <%= render 'home/course' %>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

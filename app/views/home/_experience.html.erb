@@ -1,0 +1,16 @@
+<% @experiences.each do |experience| %>
+  <section>
+    <h4><%= experience.position %>
+      <span class='title'>
+        <%= experience.employer %>
+        (
+          <%= I18n.l(experience.date_of_begin, format: '%B %Y') %> -
+          <%= experience.date_of_end.blank? ? t('page.blank_yaer_ending_experience') : I18n.l(experience.date_of_end, format: '%B %Y') %>
+        )
+      </span>
+    </h4>
+    <p>
+      <%= simple_format(experience.description) %>
+    </p>
+  </section>
+<% end %>
