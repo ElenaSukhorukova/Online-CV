@@ -1,0 +1,120 @@
+// a card position on admin page
+.card-position {
+  width: 48%;
+}
+
+// set footer
+* {
+	margin: 0;
+	padding: 0;
+}
+html,
+body {
+	height: 100%;
+	background-color: #DAE3E7;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+.content {
+	flex: 1 0 auto;
+}
+.footer {
+	flex: 0 0 auto;
+}
+// set footer end
+
+// line to split section on admin page
+
+.line {
+	border-bottom: 2px dashed #ccc;
+}
+
+// title for a project
+.project_title {
+	font-size: 20px
+}
+
+.main_caption {
+	background-color: #F0F8FF; 
+	margin-left: auto;
+	height: 250px; 
+	margin-top: -15px; 
+	margin-bottom: 40px;
+	padding-top: 20px;
+ 	
+	.photo {
+		margin-left: 100px;
+	}
+	.full_name {	
+		font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+		color: #49515a;
+    font-size: 38px;
+    margin-bottom: 5px;
+    margin-top: 30px;
+ }
+ 	.position {
+		color: #778492;
+    font-family: "Lato", arial, sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 15px;
+		margin-left: 40px;
+ 	}
+	.contact {
+		line-height: 10px;
+	}
+}
+
+.main_body {
+	// padding: 40px;
+	// font-family: 'Lato', arial, sans-serif;
+  // color: #434343;
+	// font-size: 16px;
+	// display: block;
+		margin: 15px;
+
+	body {
+		font-family: 'Lato', arial, sans-serif;
+	}
+	p {
+		margin: 15px;
+		font-family: 'Montserrat', sans-serif;	
+		color: #434343;
+		font-size: 16px;
+	}
+
+	h1, h2, h3 {
+		margin-top: 0;
+    margin-bottom: 30px;
+    color: #545e69;
+    font-size: 36px;
+	}
+	h4, h5, h6 {
+		font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #778492;
+	}
+	.title {
+		font-size: 16px;
+		color: #999;
+    font-weight: normal;
+	}
+	a {
+    color: #3AAA64;
+		text-decoration: none;
+	}
+	a:hover {
+    text-decoration: underline;
+    color: #2d844e;
+	}
+	a:active, a:hover {
+    outline: 0;
+		text-decoration: underline;
+	}
+}
