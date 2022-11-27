@@ -1,0 +1,20 @@
+<section class='line my-4'>
+  <p>
+    <strong><i><%= attribute_model(course, :coursename) %> </i></strong> 
+      <%= course.coursename %>
+  </p>
+  <p>
+   <strong><i><%= attribute_model(course, :description) %> </i></strong>
+    <%= simple_format(course.description) %>
+  </p>
+  <p>
+    <strong><i><%= attribute_model(course, :date_of_end) %> </i></strong>
+      <%= course.date_of_end.strftime('%Y') %>
+  </p>
+  <%= turbo_frame_tag "course_#{course.id}" do %>
+    <%= link_to t('link.edit', model: i18n_model_name(course).downcase), edit_course_path(course),
+      class: "btn btn-outline-dark mb-4 mx-1" %>
+  <% end%>
+  <%= button_to t('submit.delete', model: i18n_model_name(course).downcase), course_path(course), 
+    method: :delete, class: "btn btn-outline-dark mb-4 mx-1", :onclick => "return confirm('Are you sure?')", :remote => true %>
+</section>
