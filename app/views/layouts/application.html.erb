@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OnlineCv</title>
+    <meta charset='utf-8'>
+    <title><%= t('page.site_name') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "custom_application", "data-turbo-track": "reload", defer: true %>
   </head>
-
   <body>
-    <%= render 'layouts/header'%>
-    <main>   
-      <% flash.each do |type, msg| %>    
-        <!-- Change flash messages of devise to bootstrap format -->
-        <% case type %>
+    <div class='wrapper'>
+      <%= render 'layouts/header'%>
+      <main class='content'>
+        <% flash.each do |type, msg| %>    
+          <!-- Change flash messages of devise to bootstrap format -->
+          <% case type %>
           <% when 'alert'%>
             <% type = 'danger' %>
           <% when 'notice' %>
             <% type = 'success' %>
           <% end %>
-                  
-        <div 
-          class="alert alert-<%= type %> flash__message" ,
-          role="alert", 
-          data-controller="removals", 
-          data-action="animationend->removals#remove">
-        
-            <p class='text-center'><%= msg %></p>
-        
-        </div>
-      <% end %>
 
-      <%= yield %>
-    </main>
+          <%= tag.div msg, class: "alert alert-#{type} text-center", role: 'alert' %>
+        <% end %>
+
+        <%= yield %>
+      </main>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
