@@ -1,9 +1,0 @@
-<p class='text-start'>
-  <%#= image_tag @personal_detail.photo, width: '200px', class: "rounded-circle d-block", style: 'margin-right: auto;
-  margin-left: 0;' if @personal_detail.photo.attached? %><br />
-  <b><i><%= attribute_model(@personal_detail, :title) %> </i></b><%= @personal_detail.title %><br />
-  <b><i><%= attribute_model(@personal_detail, :full_name) %> </i></b><%= @personal_detail.full_name %><br />
-  <b><i><%= attribute_model(@personal_detail, :position) %> </i></b><%= @personal_detail.position %><br />
-  <b><i><%= attribute_model(@personal_detail, :about) %> </i></b>
-  <%= simple_format(@personal_detail.about) %>
-</p>

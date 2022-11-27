@@ -1,13 +1,9 @@
 <%= simple_form_for personal_detail, url: url, method: method do |f| %>
-  <%= f.input :title %><br />
   <%#= f.file_field :photo, class:"form-control", id: "formFile" %><br />
   <%= f.input :full_name %><br />
   <%= f.input :position %><br />
   <%= f.input :about %><br />
-  <%= f.label :locale %><br />
-  <% PersonalDetail::VALID_LOCALES.each do |item| %>
-        <%= f.radio_button :locale, item , class: ' input-validation-error' %> <%= item %>
-      <% end %><br /><br />
-  <%= f.button :submit, submit, class: "btn btn-light" %>
+  <%= f.input :locale, as: :radio_buttons, collection: Education::VALID_LOCALES, item_wrapper_class: 'inline' %>
+  <%= f.button :submit, submit, class: "btn btn-light my-2" %>
   <%= render 'shared/cancel_button' if f.object.persisted? %>
 <% end %> 
