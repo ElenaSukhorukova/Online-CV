@@ -104,6 +104,8 @@ ru:
     add_new: "Добавить %{model}"
     edit: "Редактировать %{model}"
     show: "Показать %{model}"
+    on_webside: 'Посмотреть на сайте'
+    on_github: 'Посмотреть на GitHub'
   menu:
     sign_in: 'Вход на страницу администратора'
     sign_up: 'Зарегистрироваться'
@@ -114,11 +116,15 @@ ru:
   home:
     blank_data: 'Пустое значение. Пожалуйста, перейдите на страницу администратора и заполните его.'
   page:
+    site_name: "Онлайн резюме"
     edit: 'Редактировать %{model}'
     new_one: 'Добавить %{model}'
     new_many: 'Добавить %{model}'
     blank_yaer_ending_experience: 'До сих пор'
     duties_and_achievements: 'Обязанности и достижения'
+    admin_title: 'Страница администратора'
+    blank: "Записей нет. Пожалуйста, добавьте их."
+    telegram: "&#9990; @elenkasu"
   flash:
     new: "%{model} успешно добавлен"
     update: "%{model} успешно отредактирован"
@@ -127,6 +133,11 @@ ru:
     new: "%{model} успешно добавлены"
     update: "%{model} успешно добавлены"
     destroy: "%{model} успешно добавлены"
+  contact: 
+    error:
+      telegram: "Телеграм должен начинаться с @"
+      website: "Сайт должен начинаться с www, http://, https:// и заканчиваться на domain.com/org/ru(или другой)"
+    contact_me: 'Связаться со мной'
   devise:
     confirmations:
       confirmed: 'Ваш адрес эл. почты успешно подтвержден.'

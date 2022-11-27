@@ -96,6 +96,8 @@ en:
     add_new: "Add a new %{model}"
     edit: "Edit the %{model}"
     show: "Show the %{model}"
+    on_webside: 'View on website'
+    on_github: 'View on GitHub'
   menu:
     sign_in: 'Sign in'
     sign_up: 'Sign up'
@@ -106,10 +108,14 @@ en:
   home:
     blank_data: 'A value is blank. Please, go to admin page and fill it.'
   page:
+    site_name: "Online CV"
     edit: "Edit the %{model}"
     new_one: "Add a new %{model}"
     new_many: "Add new %{model}"
     blank_yaer_ending_experience: 'Until now'
+    admin_title: 'Admin page'
+    blank: "There are not records yet. Please, add them."
+    telegram: "&#9990; @elenkasu"
   flash:
     new: "The %{model} was saved successfully"
     update: "The %{model} was updated successfully"
@@ -118,6 +124,11 @@ en:
     new: "The %{model} were saved successfully"
     update: "The %{model} were updated successfully"
     destroy: "The %{model} were deleted successfully"
+  contact: 
+    error:
+      telegram: "Telegram should begin from @"
+      website: "Website should begin from one of www, http://, https:// and has end domain.com/org/ru(or another)"
+    contact_me: 'Contact me'
   devise:
     confirmations:
       confirmed: 'Your email address has been successfully confirmed.'
