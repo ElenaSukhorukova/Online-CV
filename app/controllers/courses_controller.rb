@@ -1,10 +1,6 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!
-  before_action :define_course, except: %i[new create index]
-
-  def index
-    @courses = Course.all
-  end
+  before_action :define_course, except: %i[new create]
 
   def new 
     @course = @user.courses.build
@@ -14,8 +10,7 @@ class CoursesController < ApplicationController
     @course = @user.courses.build(course_params)
     
     if @course.save
-      redirect_to course_path(@course),
-      # redirect_to user_path(@user), 
+      redirect_to user_path, 
         success: I18n.t('flash.new', model: @course.locale == 'ru' ? 
         i18n_model_name(@course) : i18n_model_name(@course).downcase)
     else
@@ -28,8 +23,7 @@ class CoursesController < ApplicationController
 
   def update
     if @course.update(course_params)
-      redirect_to course_path(@course),
-      # redirect_to user_path(@user), 
+      redirect_to user_path,
         success: I18n.t('flash.update', model: @course.locale == 'ru' ? 
         i18n_model_name(@course) : i18n_model_name(@course).downcase)
     else
@@ -39,8 +33,7 @@ class CoursesController < ApplicationController
 
   def destroy   
     if @course.destroy
-      redirect_to courses_path,
-      # redirect_to user_path(@user), 
+      redirect_to user_path,
         success: I18n.t('flash.destroy', model: @course.locale == 'ru' ? 
         i18n_model_name(@course) : i18n_model_name(@course).downcase)
     end
@@ -48,11 +41,11 @@ class CoursesController < ApplicationController
 
   private
 
-  def define_course
-     @course = Course.find(params[:id])
-  end
+    def define_course
+      @course = Course.find(params[:id])
+    end
 
-  def course_params
-    params.require(:course).permit(:coursename, :description, :date_of_end, :locale)
-  end
+    def course_params
+      params.require(:course).permit(:coursename, :description, :date_of_end, :locale)
+    end
 end

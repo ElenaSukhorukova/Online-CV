@@ -1,13 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :define_project, except: %i[new create index]
-
-  def index
-    @projects = Project.all
-  end
-
-  def show
-  end
+  before_action :define_project, except: %i[new create]
 
   def new 
     @project = @user.projects.build
@@ -17,8 +10,7 @@ class ProjectsController < ApplicationController
     @project = @user.projects.build(project_params)
     
     if @project.save
-      redirect_to projects_path, 
-      # redirect_to user_path(@user), 
+      redirect_to user_path, 
         success: I18n.t('flash.new', model: @project.locale == 'ru' ? 
         i18n_model_name(@project) : i18n_model_name(@project).downcase)
     else
@@ -31,8 +23,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to project_path(@project),
-      # redirect_to user_path(@user), 
+      redirect_to user_path,
         success: I18n.t('flash.update', model: @project.locale == 'ru' ? 
         i18n_model_name(@project) : i18n_model_name(@project).downcase)
     else
@@ -42,8 +33,7 @@ class ProjectsController < ApplicationController
 
   def destroy   
     if @project.destroy
-      redirect_to projects_path,
-      # redirect_to user_path(@user), 
+      redirect_to user_path, 
         success: I18n.t('flash.destroy', model: @project.locale == 'ru' ? 
         i18n_model_name(@project) : i18n_model_name(@project).downcase)
     end
@@ -51,11 +41,11 @@ class ProjectsController < ApplicationController
 
   private
 
-  def define_project
-    @project = Project.find(params[:id])
-  end
-  
-  def project_params
-    params.require(:project).permit(:title, :site, :github, :description, :locale)#, previews: [])
-  end
+    def define_project
+      @project = Project.find(params[:id])
+    end
+    
+    def project_params
+      params.require(:project).permit(:title, :site, :github, :description, :locale)#, previews: [])
+    end
 end

@@ -1,14 +1,7 @@
 class ExperiencesController < ApplicationController
   before_action :authenticate_user!
-  before_action :define_experience, except: %i[new create index]
+  before_action :define_experience, except: %i[new create]
   
-  def index
-    @experiences = Experience.all
-  end
-
-  def show
-  end
-
   def new 
     @experience = @user.experiences.build
   end
@@ -17,8 +10,7 @@ class ExperiencesController < ApplicationController
     @experience = @user.experiences.build(experience_params)
    
     if @experience.save
-      redirect_to experience_path(@experience), 
-      # redirect_to user_path(@user), 
+      redirect_to user_path, 
         success: I18n.t('flash.new', model: @experience.locale == 'ru' ? 
         i18n_model_name(@experience) : i18n_model_name(@experience).downcase)
     else
@@ -31,8 +23,7 @@ class ExperiencesController < ApplicationController
 
   def update
     if @experience.update(experience_params)
-      redirect_to experience_path(@experience), 
-      # redirect_to user_path(@user), 
+      redirect_to user_path,
         success: I18n.t('flash.update', model: @experience.locale == 'ru' ? 
         i18n_model_name(@experience) : i18n_model_name(@experience).downcase)
     else
@@ -42,8 +33,7 @@ class ExperiencesController < ApplicationController
 
   def destroy   
     if @experience.destroy
-      redirect_to experiences_path, 
-      # redirect_to user_path(@user), 
+      redirect_to user_path, 
         success: I18n.t('flash.destroy', model: @experience.locale == 'ru' ? 
         i18n_model_name(@experience) : i18n_model_name(@experience).downcase)
     end
@@ -51,11 +41,11 @@ class ExperiencesController < ApplicationController
 
   private
 
-  def define_experience
-    @experience = Experience.find(params[:id])
-  end
-  
-  def experience_params
-    params.require(:experience).permit(:employer, :position, :date_of_begin, :date_of_end, :description, :locale)
-  end
+    def define_experience
+      @experience = Experience.find(params[:id])
+    end
+    
+    def experience_params
+      params.require(:experience).permit(:employer, :position, :date_of_begin, :date_of_end, :description, :locale)
+    end
 end
