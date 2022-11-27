@@ -1,20 +1,103 @@
-<%= link_to t('link.add_new', model: i18n_model_name(@contact).singularize.downcase), new_user_contact_path(@user) %>
-<%= link_to 'All contacts', contacts_path %>
-<br />
-<%= link_to t('link.add_new', model: i18n_model_name(@course).singularize.downcase), new_user_course_path(@user) %>
-<%= link_to 'All courses', courses_path %>
-<br />
-<%= link_to t('link.add_new', model: i18n_model_name(@education).singularize.downcase), new_user_education_path(@user) %>
-<%= link_to 'All educations', educations_path %>
-<br />
-<%= link_to t('link.add_new', model: i18n_model_name(@experience).singularize.downcase), new_user_experience_path(@user) %>
-<%= link_to 'All experience', experiences_path %> 
-<br />
-<%= link_to t('link.add_new', model: i18n_model_name(@personal_detail).singularize.downcase), new_user_personal_detail_path(@user) %>
-<%= link_to 'All personal details', personal_details_path %> 
-<br />
-<%= link_to t('link.add_new', model: i18n_model_name(@project).singularize.downcase), new_user_project_path(@user) %>
-<%= link_to 'All projects', projects_path %> 
-<br />
-<%= link_to t('link.add_new', model: i18n_model_name(@skill).singularize.downcase), new_user_skill_path(@user) %>
-<%= link_to 'All skills', skills_path %>
+<section class='container mt-3'>
+  <h1 class='md-4'><%= t('page.admin_title') %></h1>
+  <div class='row row-cols-2 mt-2'>
+    <section class='card col mt-2 ms-4 card-position'>
+      <div class="card-body">
+      <h2 class="card-title mb-4"><%= i18n_model_name(@contact) %></h2>
+        <div class= "card-text">
+          <%= turbo_frame_tag dom_id(@contact) do %>
+            <%= link_to t('link.add_new', model: i18n_model_name(@contact).singularize.downcase), 
+              new_user_contact_path(@user), class: "btn btn-outline-dark mb-4" %>
+          <% end %>
+            <p>
+            <%= render 'contacts/contact', contact: @contacts if @contacts.present? %>
+            </p>
+        </div>
+      </div>
+    </section>
+    <section class='card col mt-2 ms-4 card-position'>
+      <div class="card-body">
+        <h2 class="card-title mb-4"><%= i18n_model_name(@course, count: 2) %></h2>
+        <div class= "card-text">
+          <%= turbo_frame_tag dom_id(@course) do %>
+            <%= link_to t('link.add_new', model: i18n_model_name(@course).singularize.downcase), 
+              new_user_course_path(@user), class: "btn btn-outline-dark mb-4" %>
+          <% end %>
+            <p>
+              <%= render partial: 'courses/course', collection: @courses if @courses.present? %>
+            </p>
+        </div>
+      </div>
+    </section>
+    <section class='card col mt-2 ms-4 card-position'>
+      <div class="card-body">
+        <div class= "card-text">
+          <h2 class="card-title mb-4"><%= i18n_model_name(@education) %></h2>
+          <%= turbo_frame_tag dom_id(@education) do %>
+            <%= link_to t('link.add_new', model: i18n_model_name(@education).singularize.downcase), 
+              new_user_education_path(@user), class: "btn btn-outline-dark mb-4" %>
+          <% end %>
+          <p>
+            <%= render partial: 'educations/education', collection: @educations if @educations.present? %>
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class='card col mt-2 ms-4 card-position'>
+      <div class="card-body">
+        <h2 class="card-title mb-4"><%= i18n_model_name(@experience) %></h2>
+        <div class= "card-text">
+          <%= turbo_frame_tag dom_id(@experience) do %>
+            <%= link_to t('link.add_new', model: i18n_model_name(@experience).singularize.downcase), 
+              new_user_experience_path(@user), class: "btn btn-outline-dark mb-4" %>
+          <% end %>
+          <p>
+            <%= render partial: 'experiences/experience', collection: @experiences if @experiences.present? %>
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class='card col mt-2 ms-4 card-position'>
+      <div class="card-body">
+        <h2 class="card-title mb-4"><%= i18n_model_name(@personal_detail) %></h2>
+        <div class= "card-text">
+          <%= turbo_frame_tag dom_id(@personal_detail) do %>
+            <%= link_to t('link.add_new', model: i18n_model_name(@personal_detail).singularize.downcase), 
+              new_user_personal_detail_path(@user), class: "btn btn-outline-dark mb-4" %>
+            <p>
+              <%= render 'personal_details/personal_detail', personal_detail: @personal_details if @personal_details.present? %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </section>
+    <section class='card col mt-2 ms-4 card-position'>
+      <div class="card-body">
+        <h2 class="card-title mb-4"><%= i18n_model_name(@project, count: 2) %></h2>
+        <div class= "card-text">
+          <%= turbo_frame_tag dom_id(@project) do %>
+            <%= link_to t('link.add_new', model: i18n_model_name(@project).downcase), 
+              new_user_project_path(@user), class: "btn btn-outline-dark mb-4" %>
+            <p>
+              <%= render partial: 'projects/project', collection: @projects if @projects.present? %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </section>
+    <section class='card col mt-2 ms-4 card-position'>
+      <div class="card-body">
+        <h2 class="card-title mb-4"><%= i18n_model_name(@skill) %></h2>
+        <div class= "card-text">
+          <%= turbo_frame_tag dom_id(@skill) do %>
+            <%= link_to t('link.add_new', model: i18n_model_name(@skill).singularize.downcase), 
+              new_user_skill_path(@user), class: "btn btn-outline-dark mb-4"  %>
+          <% end %>
+          <p>
+            <%= render partial: 'skills/skill', collection: @skills if @skills.present? %>
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
