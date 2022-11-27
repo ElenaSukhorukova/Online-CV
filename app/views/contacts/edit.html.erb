@@ -1,4 +1,7 @@
-<h1><%= t('page.edit', model: i18n_model_name(@contact)) %></h1>
-
-<%= render partial: 'form', locals: { contact: @contact, method: :put, 
-  url: contact_path(@contact), submit: t('submit.edit', model: i18n_model_name(@contact).downcase) } %>
+<%= turbo_frame_tag dom_id(@contact) do %>
+  <div class='my-4 mx-4'>
+    <h3 class='md-4'><%= t('page.edit', model: i18n_model_name(@contact)) %></h3>
+    <%= render partial: 'form', locals: { contact: @contact, method: :put, 
+      url: contact_path(@contact), submit: t('submit.edit', model: i18n_model_name(@contact).downcase) } %>
+  </div>
+<% end %>

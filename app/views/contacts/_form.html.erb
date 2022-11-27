@@ -5,10 +5,7 @@
   <%= f.input :linkedin %><br />
   <%= f.input :github %><br />
   <%= f.input :telegram %><br />
-  <%= f.label :locale %><br />
-  <% Contact::VALID_LOCALES.each do |item| %>
-        <%= f.radio_button :locale, item, class: 'input-validation-error' %> <%= item %>
-      <% end %><br /><br />
-  <%= f.button :submit, submit, class: "btn btn-light" %>
+  <%= f.input :locale, as: :radio_buttons, collection: Education::VALID_LOCALES, item_wrapper_class: 'inline' %>
+  <%= f.button :submit, submit, class: "btn btn-light my-2" %>
   <%= render 'shared/cancel_button' if f.object.persisted? %>
 <% end %>
