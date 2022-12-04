@@ -4,15 +4,15 @@
     margin-left: 0;' if @personal_detail.photo.attached? %><br />
   </p>
   <p>
-    <strong><i><%= attribute_model(personal_detail, :full_name) %> </i></strong>
+    <strong><i><%= attribute_model(personal_detail, :full_name) %>&nbsp;</i></strong>
     <%= personal_detail.full_name %>
   </p>
   <p>
-    <strong><i><%= attribute_model(personal_detail, :position) %> </i></strong>
+    <strong><i><%= attribute_model(personal_detail, :position) %>&nbsp;</i></strong>
     <%= personal_detail.position %>
   </p>
   <p>
-    <strong><i><%= attribute_model(personal_detail, :about) %> </i></strong>
+    <strong><i><%= attribute_model(personal_detail, :about) %>&nbsp;</i></strong>
     <%= simple_format(personal_detail.about) %>
   </p>
   <%= turbo_frame_tag "personal_detail_#{personal_detail.id}" do %>
