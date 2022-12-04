@@ -1,5 +1,10 @@
-
 <% unless user_signed_in? %>
-  <li class="nav-item"><%= link_to t('menu.sign_up'), sign_up_path, class: "nav-link" unless @user.present? %></li>
-  <li class="nav-item"><%= link_to t('menu.sign_in'), sign_in_url, class: "nav-link" unless current_user  %></li>
-<% end %>    
+  <li class="nav-item">
+    <%= nav_tab t('menu.sign_up'), sign_up_path, class: "nav-link", 
+      current_page: current_page unless @user.present? %>
+  </li>
+  <li class="nav-item">
+    <%= nav_tab t('menu.sign_in'), sign_in_url, class: "nav-link", 
+      current_page: current_page unless current_user %>
+  </li>
+<% end %>

@@ -1,0 +1,47 @@
+<%= provide :main_menu do %>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <% unless user_signed_in? %>
+            <li class="nav-item">
+              <%= nav_tab t('menu.owner'), admin_path, role: 'button', 
+                class: "nav-link", current_page: current_page if controller_name == 'home' && action_name == 'index' %>     
+            </li>
+            <% if action_name == 'admin' || :devise_controller? %>
+              <%= render partial: 'home/admin', locals: { current_page: current_page } %>
+            <% end %>
+          <% else %>
+            <li class="nav-item">
+              <%= nav_tab t('menu.main_page'), root_path, class: "nav-link", 
+                style: 'padding-left: 40px;', current_page: current_page %>
+            </li>
+            <li class="nav-item">
+              <%= nav_tab t('menu.admin_page'), user_path, class: "nav-link", current_page: current_page %>
+            </li>      
+            <li class="nav-item">
+              <%= nav_tab t('menu.sign_out'), sign_out_path, 'data-turbo_method': :delete, 
+              :onclick => "return confirm('Are you sure?')", :remote => true, class: "nav-link",
+              current_page: current_page %>
+            </li>
+          <% end %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= t('submit.language') %>
+            </a>
+            <ul class="dropdown-menu text-center">
+              <li class="nav-item">
+                <%= link_to 'English', controller: controller_name, 
+                  action: action_name, locale: :en, class: "dropdown-item" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Русский', controller: controller_name, 
+                  action: action_name, locale: :ru, class: "dropdown-item" %>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </naw>  
+  </header>
+<% end %>

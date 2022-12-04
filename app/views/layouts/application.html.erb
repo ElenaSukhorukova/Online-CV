@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset='utf-8'>
-    <title><%= t('page.site_name') %></title>
+    <title><%= full_title(yield(:page_title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -15,8 +15,9 @@
   </head>
   <body>
     <div class='wrapper'>
-      <%= render 'layouts/header'%>
-      <main class='content'>
+      <%= yield :main_menu %>
+      
+      <main class='container content'>
         <% flash.each do |type, msg| %>    
           <!-- Change flash messages of devise to bootstrap format -->
           <% case type %>
