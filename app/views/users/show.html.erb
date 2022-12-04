@@ -1,4 +1,6 @@
 <section class='container mt-3'>
+  <% provide :page_title, t('menu.admin_page') %>
+  <% currently_at t('menu.admin_page') %>
   <h1 class='md-4'><%= t('page.admin_title') %></h1>
   <div class='row row-cols-2 mt-2'>
     <section class='card col mt-2 ms-4 card-position'>
@@ -6,7 +8,7 @@
       <h2 class="card-title mb-4"><%= i18n_model_name(@contact) %></h2>
         <div class= "card-text">
           <%= turbo_frame_tag dom_id(@contact) do %>
-            <%= link_to t('link.add_new', model: i18n_model_name(@contact).singularize.downcase), 
+            <%= link_to t('link.add_new', model: i18n_model_name(@contact).downcase), 
               new_user_contact_path(@user), class: "btn btn-outline-dark mb-4" %>
           <% end %>
             <p>
@@ -20,7 +22,7 @@
         <h2 class="card-title mb-4"><%= i18n_model_name(@course, count: 2) %></h2>
         <div class= "card-text">
           <%= turbo_frame_tag dom_id(@course) do %>
-            <%= link_to t('link.add_new', model: i18n_model_name(@course).singularize.downcase), 
+            <%= link_to t('link.add_new', model: i18n_model_name(@course).downcase), 
               new_user_course_path(@user), class: "btn btn-outline-dark mb-4" %>
           <% end %>
             <p>
@@ -34,7 +36,7 @@
         <div class= "card-text">
           <h2 class="card-title mb-4"><%= i18n_model_name(@education) %></h2>
           <%= turbo_frame_tag dom_id(@education) do %>
-            <%= link_to t('link.add_new', model: i18n_model_name(@education).singularize.downcase), 
+            <%= link_to t('link.add_new', model: i18n_model_name(@education).downcase), 
               new_user_education_path(@user), class: "btn btn-outline-dark mb-4" %>
           <% end %>
           <p>
@@ -48,7 +50,7 @@
         <h2 class="card-title mb-4"><%= i18n_model_name(@experience) %></h2>
         <div class= "card-text">
           <%= turbo_frame_tag dom_id(@experience) do %>
-            <%= link_to t('link.add_new', model: i18n_model_name(@experience).singularize.downcase), 
+            <%= link_to t('link.add_new', model: i18n_model_name(@experience).downcase), 
               new_user_experience_path(@user), class: "btn btn-outline-dark mb-4" %>
           <% end %>
           <p>
@@ -62,7 +64,7 @@
         <h2 class="card-title mb-4"><%= i18n_model_name(@personal_detail) %></h2>
         <div class= "card-text">
           <%= turbo_frame_tag dom_id(@personal_detail) do %>
-            <%= link_to t('link.add_new', model: i18n_model_name(@personal_detail).singularize.downcase), 
+            <%= link_to t('link.add_new', model: i18n_model_name(@personal_detail).downcase), 
               new_user_personal_detail_path(@user), class: "btn btn-outline-dark mb-4" %>
             <p>
               <%= render 'personal_details/personal_detail', personal_detail: @personal_details if @personal_details.present? %>
@@ -87,10 +89,10 @@
     </section>
     <section class='card col mt-2 ms-4 card-position'>
       <div class="card-body">
-        <h2 class="card-title mb-4"><%= i18n_model_name(@skill) %></h2>
+        <h2 class="card-title mb-4"><%= i18n_model_name(@skill, count: 2) %></h2>
         <div class= "card-text">
           <%= turbo_frame_tag dom_id(@skill) do %>
-            <%= link_to t('link.add_new', model: i18n_model_name(@skill).singularize.downcase), 
+            <%= link_to t('link.add_new', model: i18n_model_name(@skill).downcase), 
               new_user_skill_path(@user), class: "btn btn-outline-dark mb-4"  %>
           <% end %>
           <p>
