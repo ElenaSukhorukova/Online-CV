@@ -1,6 +1,6 @@
 class PersonalDetailsController < ApplicationController
   before_action :authenticate_user!
-  before_action :define_personal_detail, except: %i[new create]
+  before_action :define_personal_detail!, except: %i[new create]
   after_action :chenge_full_name, only: %i[create update]
 
   def new
@@ -42,7 +42,7 @@ class PersonalDetailsController < ApplicationController
 
   private
 
-    def define_personal_detail
+    def define_personal_detail!
       @personal_detail = PersonalDetail.find(params[:id])
     end
 

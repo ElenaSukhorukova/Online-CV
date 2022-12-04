@@ -1,6 +1,6 @@
 class ExperiencesController < ApplicationController
   before_action :authenticate_user!
-  before_action :define_experience, except: %i[new create]
+  before_action :define_experience!, except: %i[new create]
   
   def new 
     @experience = @user.experiences.build
@@ -41,7 +41,7 @@ class ExperiencesController < ApplicationController
 
   private
 
-    def define_experience
+    def define_experience!
       @experience = Experience.find(params[:id])
     end
     

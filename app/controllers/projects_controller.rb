@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :define_project, except: %i[new create]
+  before_action :define_project!, except: %i[new create]
 
   def new 
     @project = @user.projects.build
@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
 
   private
 
-    def define_project
+    def define_project!
       @project = Project.find(params[:id])
     end
     

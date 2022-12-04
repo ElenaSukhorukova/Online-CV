@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include ErrorHandling
+  include ApplicationHelper
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
   helper_method :i18n_model_name
@@ -27,9 +29,6 @@ class ApplicationController < ActionController::Base
         nil
     end
 
-    def i18n_model_name(model, count: 0)
-      model.model_name.human(count: count)
-    end
     def define_user
       @user = User.first
     end

@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
-  before_action :define_contact, except: %i[new create]
+  before_action :define_contact!, except: %i[new create]
 
   def new
     @contact = @user.contacts.build
@@ -41,7 +41,7 @@ class ContactsController < ApplicationController
 
   private
 
-    def define_contact
+    def define_contact!
       @contact = Contact.find(params[:id])
     end
 

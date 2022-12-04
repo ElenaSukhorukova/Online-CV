@@ -1,6 +1,6 @@
 class EducationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_variable, except: %i[new create]
+  before_action :find_variable!, except: %i[new create]
 
   def new
     @education = @user.educations.build
@@ -41,7 +41,7 @@ class EducationsController < ApplicationController
 
   private
 
-    def find_variable
+    def find_variable!
       @education = Education.find(params[:id])
       @user = User.first
     end

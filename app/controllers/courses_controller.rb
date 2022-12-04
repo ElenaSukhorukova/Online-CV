@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!
-  before_action :define_course, except: %i[new create]
+  before_action :define_course!, except: %i[new create]
 
   def new 
     @course = @user.courses.build
@@ -41,7 +41,7 @@ class CoursesController < ApplicationController
 
   private
 
-    def define_course
+    def define_course!
       @course = Course.find(params[:id])
     end
 

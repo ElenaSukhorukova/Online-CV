@@ -1,6 +1,6 @@
 class SkillsController < ApplicationController
   before_action :authenticate_user!
-  before_action :define_skill, except: %i[new create]
+  before_action :define_skill!, except: %i[new create]
 
   def new 
      @skill = @user.skills.build
@@ -41,7 +41,7 @@ class SkillsController < ApplicationController
 
   private
 
-    def define_skill
+    def define_skill!
       @skill = Skill.find(params[:id])
     end
     

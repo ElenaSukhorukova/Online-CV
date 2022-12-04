@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :define_variables
+  before_action :define_variables!
 
   def show
     @user = User.first
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   private
 
-    def define_variables
+    def define_variables!
       @contacts = Contact.where(locale: locale.to_s).last
       @courses = Course.where(locale: locale.to_s).order(date_of_end: :desc)
       @educations = Education.where(locale: locale.to_s).order(date_of_end: :desc)
