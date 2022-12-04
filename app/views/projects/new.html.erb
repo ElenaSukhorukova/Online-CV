@@ -2,7 +2,7 @@
   <div class='my-4 mx-4'>
     <%= render 'shared/go_back_button' %>
     <h3 class='md-4'><%= t('page.new_one', model: i18n_model_name(@project).downcase) %></h3>
-    <%= render partial: 'form',  locals: { project: @project, method: :post, 
-      url: user_projects_path(@user), submit: t('submit.create_one', model: i18n_model_name(@project).downcase) } %>
+    <%= render partial: 'form',  locals: { model: [@user, @project], method: :post, 
+      submit: t('submit.create_one', model: i18n_model_name(@project).downcase) } %>
   </div>
 <% end %>

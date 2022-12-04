@@ -1,10 +1,10 @@
-<%= simple_form_for project, url: url, method: method, multiple: true do |f| %>
+<%= simple_form_for model, method: method, multiple: true do |f| %>
   <%= f.input :title%><br />
   <%#= f.file_field :previews, multiple: true, class:"form-control", id: "formFile" %><br />
   <%= f.input :site %><br />
   <%= f.input :github %><br />
   <%= f.input :description %><br />
   <%= f.input :locale, as: :radio_buttons, collection: Education::VALID_LOCALES, item_wrapper_class: 'inline' %>
-  <%= f.button :submit, submit, class: "btn btn-light my-2" %>
+  <%= f.button :submit, submit, class: "btn btn-outline-dark my-2 btn-sm" %>
   <%= render 'shared/cancel_button' if f.object.persisted? %>
 <% end %> 
