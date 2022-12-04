@@ -1,22 +1,22 @@
 <section class='line my-4'>
   <p>
-    <strong><i><%= attribute_model(experience, :employer) %> </i></strong>
+    <strong><i><%= attribute_model(experience, :employer) %>&nbsp;</i></strong>
     <%= experience.employer %>
   </p>
   <p>
-    <strong><i><%= attribute_model(experience, :position) %> </i></strong>
+    <strong><i><%= attribute_model(experience, :position) %>&nbsp;</i></strong>
     <%= experience.position %>
   </p>
   <p>
-    <strong><i><%= attribute_model(experience, :date_of_begin) %> </i></strong>
+    <strong><i><%= attribute_model(experience, :date_of_begin) %>&nbsp;</i></strong>
     <%= I18n.l(experience.date_of_begin, format: '%B %Y') %>
   </p>
   <p>
-    <strong><i><%= attribute_model(experience, :date_of_end) %> </i></strong>
+    <strong><i><%= attribute_model(experience, :date_of_end) %>&nbsp;</i></strong>
     <%= experience.date_of_end.blank? ? t('page.blank_yaer_ending_experience') : I18n.l(experience.date_of_end, format: '%B %Y') %>
   </p>
   <p>
-    <strong><i><%= attribute_model(experience, :description) %> </i></strong><br />
+    <strong><i><%= attribute_model(experience, :description) %>&nbsp;</i></strong><br />
     <%= simple_format(experience.description) %>
   </p>
   <%= turbo_frame_tag "experience_#{experience.id}" do %>

@@ -1,7 +1,7 @@
 <%= turbo_frame_tag dom_id(@experience) do %>
   <div class='my-4 mx-4'>
     <h3 class='md-4'><%= t('page.edit', model: i18n_model_name(@experience)) %></h3>
-    <%= render partial: 'form', locals: { experience: @experience, method: :put, 
-      url: experience_path(@experience), submit: t('submit.edit', model: i18n_model_name(@experience).downcase) } %>
+    <%= render partial: 'form', locals: { model: @experience, method: :put, 
+      submit: t('submit.edit', model: i18n_model_name(@experience).downcase) } %>
   </div>
 <% end %>
