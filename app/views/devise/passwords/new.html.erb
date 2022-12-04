@@ -1,7 +1,9 @@
-<h2><%= t(".forgot_your_password") %></h2>
-<div class='col-sm-5'>
-  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name),
-    html: { method: :post }, data: { turbo: false }) do |f| %>
+<div class='col-5'>
+  <% provide :page_title, t(".forgot_your_password") %>
+  <% currently_at %>
+  <h1 class='my-2'><%= t(".forgot_your_password") %></h1>
+
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
@@ -11,8 +13,8 @@
                   input_html: { autocomplete: "email" } %>
     </div>
 
-    <div class="form-actions mt-2 mb-2">
-      <%= f.button :submit, t(".send_me_reset_password_instructions"), class: "btn btn-light"  %>
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn btn-outline-dark mb-4", t(".send_me_reset_password_instructions") %>
     </div>
   <% end %>
 

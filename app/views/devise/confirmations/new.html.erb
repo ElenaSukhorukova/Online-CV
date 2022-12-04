@@ -1,7 +1,9 @@
-<h2><%= t(".resend_confirmation_instructions") %></h2>
-<div class='col-sm-5'>
-  <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), 
-    html: { method: :post }, data: { turbo: false }) do |f| %>
+<div class='col-5'>
+  <% provide :page_title, t(".resend_confirmation_instructions") %>
+  <% currently_at %>
+  <h1 class='my-2'><%= t(".resend_confirmation_instructions") %></h2>
+
+  <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
     <%= f.error_notification %>
     <%= f.full_error :confirmation_token %>
 
@@ -13,8 +15,8 @@
                   input_html: { autocomplete: "email" } %>
     </div>
 
-    <div class="form-actions mt-2 mb-2">
-      <%= f.button :submit, t(".resend_confirmation_instructions"), class: "btn btn-light"  %>
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn btn-outline-dark mb-4", t(".resend_confirmation_instructions") %>
     </div>
   <% end %>
 

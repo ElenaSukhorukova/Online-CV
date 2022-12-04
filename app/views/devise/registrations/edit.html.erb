@@ -1,7 +1,9 @@
-<h2><%= t(".title", resource: resource.model_name.human) %></h2>
-<div class='col-sm-5'>
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), 
-    html: { method: :put }, data: { turbo: false }) do |f| %>
+<div class='col-5'>
+  <% provide :page_title, t(".title", resource: resource.model_name.human) %>
+  <% currently_at %>
+  <h1 class='my-2'><%= t(".title", resource: resource.model_name.human) %></h1>
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
@@ -25,7 +27,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, t(".update"), class: "btn btn-light"  %>
+      <%= f.button :submit, t(".update"), class: "btn btn-outline-dark mb-4" %>
     </div>
   <% end %>
 

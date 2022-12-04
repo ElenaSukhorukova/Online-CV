@@ -1,6 +1,10 @@
-<h2><%= t(".sign_in") %></h2>
-<div class='col-sm-5'>
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
+<div class='col-5'>
+  <% provide :page_title, t(".sign_in") %>
+  <% currently_at t('menu.sign_in') %>
+
+  <h1 class='my-2'><%= t(".sign_in") %></h1>
+
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
       <%= f.input :email,
                   required: false,
@@ -12,8 +16,8 @@
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
 
-    <div class="form-actions mt-2 mb-2">
-      <%= f.button :submit, t(".sign_in"), class: "btn btn-light" %>
+    <div class="form-actions">
+      <%= f.button :submit, t(".sign_in"), class: "btn btn-outline-dark mb-4" %>
     </div>
   <% end %>
 

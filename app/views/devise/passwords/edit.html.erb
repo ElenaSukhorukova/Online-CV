@@ -1,7 +1,9 @@
-<h2><%= t(".change_your_password") %></h2>
-<div class='col-sm-5'>
-  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), 
-    html: { method: :put }, data: { turbo: false }) do |f| %>
+<div class='col-5'>
+  <% provide :page_title, t(".change_your_password") %>
+  <% currently_at %>
+  <h1 class='my-2'><%= t(".change_your_password") %></h1>
+
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
 
     <%= f.input :reset_password_token, as: :hidden %>
@@ -20,8 +22,8 @@
                   input_html: { autocomplete: "new-password" } %>
     </div>
 
-    <div class="form-actions mt-2 mb-2">
-      <%= f.button :submit, t(".change_my_password"), class: "btn btn-light"  %>
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn btn-outline-dark mb-4", t(".change_my_password") %>
     </div>
   <% end %>
 
