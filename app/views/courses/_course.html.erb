@@ -1,14 +1,14 @@
 <section class='line my-4'>
   <p>
-    <strong><i><%= attribute_model(course, :coursename) %> </i></strong> 
+    <strong><i><%= attribute_model(course, :coursename) %>&nbsp;</i></strong> 
       <%= course.coursename %>
   </p>
   <p>
-   <strong><i><%= attribute_model(course, :description) %> </i></strong>
+   <strong><i><%= attribute_model(course, :description) %>&nbsp;</i></strong>
     <%= simple_format(course.description) %>
   </p>
   <p>
-    <strong><i><%= attribute_model(course, :date_of_end) %> </i></strong>
+    <strong><i><%= attribute_model(course, :date_of_end) %>&nbsp;</i></strong>
       <%= course.date_of_end.strftime('%Y') %>
   </p>
   <%= turbo_frame_tag "course_#{course.id}" do %>
