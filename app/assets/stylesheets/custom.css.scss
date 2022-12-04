@@ -38,6 +38,8 @@ body {
 	font-size: 20px
 }
 
+// mane page
+
 .main_caption {
 	background-color: #F0F8FF; 
 	margin-left: auto;
@@ -49,6 +51,7 @@ body {
 	.photo {
 		margin-left: 100px;
 	}
+
 	.full_name {	
 		font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -56,7 +59,8 @@ body {
     font-size: 38px;
     margin-bottom: 5px;
     margin-top: 30px;
- }
+ 	}
+
  	.position {
 		color: #778492;
     font-family: "Lato", arial, sans-serif;
@@ -66,18 +70,14 @@ body {
     margin-bottom: 15px;
 		margin-left: 40px;
  	}
+
 	.contact {
 		line-height: 10px;
 	}
 }
 
 .main_body {
-	// padding: 40px;
-	// font-family: 'Lato', arial, sans-serif;
-  // color: #434343;
-	// font-size: 16px;
-	// display: block;
-		margin: 15px;
+	margin: 15px;
 
 	body {
 		font-family: 'Lato', arial, sans-serif;
@@ -95,26 +95,42 @@ body {
     color: #545e69;
     font-size: 36px;
 	}
+
 	h4, h5, h6 {
 		font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     color: #778492;
 	}
+
 	.title {
 		font-size: 16px;
 		color: #999;
     font-weight: normal;
 	}
+
 	a {
     color: #3AAA64;
 		text-decoration: none;
 	}
+
 	a:hover {
     text-decoration: underline;
     color: #2d844e;
 	}
+
 	a:active, a:hover {
     outline: 0;
 		text-decoration: underline;
+	}
+}
+
+nav {
+	a {
+		color: black;
+		text-decoration: none;
+	}
+	a:hover {
+		color: MediumSeaGreen;
+		font-weight: bold
 	}
 }
