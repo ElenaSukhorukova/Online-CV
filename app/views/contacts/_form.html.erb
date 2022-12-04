@@ -1,4 +1,4 @@
-<%= simple_form_for contact, url: url, method: method do |f| %>
+<%= simple_form_for model, method: method do |f| %>
   <%= f.input :address %><br />
   <%= f.input :email %><br />
   <%= f.input :phone %><br />
@@ -6,6 +6,6 @@
   <%= f.input :github %><br />
   <%= f.input :telegram %><br />
   <%= f.input :locale, as: :radio_buttons, collection: Education::VALID_LOCALES, item_wrapper_class: 'inline' %>
-  <%= f.button :submit, submit, class: "btn btn-light my-2" %>
+  <%= f.button :submit, submit, class: "btn btn-outline-dark my-2 btn-sm" %>
   <%= render 'shared/cancel_button' if f.object.persisted? %>
 <% end %>

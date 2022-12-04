@@ -2,7 +2,7 @@
   <div class='my-4 mx-4'>
     <%= render 'shared/go_back_button' %>
     <h3 class='md-4'><%= t('page.new_many', model: i18n_model_name(@contact).downcase) %></h3>
-    <%= render partial: 'form',  locals: { contact: @contact, method: :post, 
-      url: user_contacts_path(@user), submit: t('submit.create_many', model: i18n_model_name(@contact).downcase) } %>
+    <%= render partial: 'form',  locals: { model: [@user, @contact], method: :post,
+       submit: t('submit.create_many', model: i18n_model_name(@contact).downcase) } %>
   </div>
 <% end %>
