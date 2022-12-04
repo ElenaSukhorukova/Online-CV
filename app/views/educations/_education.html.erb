@@ -1,18 +1,18 @@
 <section class='line my-4'>
   <p>
-    <strong><i><%= attribute_model(education, :name_organization) %> </i></strong><br />
+    <strong><i><%= attribute_model(education, :name_organization) %>&nbsp;</i></strong><br />
     <%= education.name_organization %>
   </p>
   <p>
-    <strong><i><%= attribute_model(education, :degree) %> </i></strong>
+    <strong><i><%= attribute_model(education, :degree) %>&nbsp;</i></strong>
     <%= education.degree %>
   </p>
   <p>
-    <strong><i><%= attribute_model(education, :field_of_study) %> </i></strong>
+    <strong><i><%= attribute_model(education, :field_of_study) %>&nbsp;</i></strong>
     <%= education.field_of_study %>
   </p>
   <p>
-    <strong><i><%= attribute_model(education, :date_of_end) %> </i></strong>
+    <strong><i><%= attribute_model(education, :date_of_end) %>&nbsp;</i></strong>
     <%= education.date_of_end.strftime('%Y') %>
   </p> 
   <%= turbo_frame_tag "education_#{education.id}" do %>
