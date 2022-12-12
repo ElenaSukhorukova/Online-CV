@@ -95,7 +95,7 @@ ru:
   submit:
     create_one: "Добавить %{model}"
     create_many: "Добавить %{model}"
-    update: "Редактировать %{model}"
+    edit: "Редактировать %{model}"
     cancel: 'Отменить'
     go_back: '&larr; Вернуться назад'
     delete: "Удалить %{model}"
