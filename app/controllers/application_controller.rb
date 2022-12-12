@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include ErrorHandling
   include ApplicationHelper
+  include Pagy::Backend
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
   helper_method :i18n_model_name

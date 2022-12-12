@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+  
   def i18n_model_name(model, count: 1)
     model.model_name.human(count: count)
   end
