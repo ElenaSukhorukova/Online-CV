@@ -98,6 +98,8 @@ GEM
     devise-i18n (1.10.2)
       devise (>= 4.8.0)
     erubi (1.11.0)
+    faker (3.0.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
@@ -139,6 +141,8 @@ GEM
     nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (5.10.1)
+      activesupport
     pg (1.4.5)
     public_suffix (5.0.0)
     puma (5.6.5)
@@ -248,10 +252,12 @@ DEPENDENCIES
   debug
   devise
   devise-i18n
+  faker (~> 3)
   figaro
   importmap-rails
   jbuilder
   jsbundling-rails (~> 1.0)
+  pagy (~> 5.10, >= 5.10.1)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)
