@@ -68,7 +68,6 @@ body {
     font-size: 24px;
     margin-top: 0;
     margin-bottom: 15px;
-		margin-left: 40px;
  	}
 
 	.contact {
@@ -125,6 +124,7 @@ body {
 }
 
 nav {
+	border-bottom: 1px solid #b4bbc1;
 	a {
 		color: black;
 		text-decoration: none;
@@ -133,4 +133,16 @@ nav {
 		color: MediumSeaGreen;
 		font-weight: bold
 	}
+}
+
+// text align
+
+.justify {
+  text-align: justify;
+}
+
+// skill-admin
+
+.skill-admin {
+	margin-left:21px
 }
