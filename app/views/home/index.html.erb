@@ -1,26 +1,31 @@
 <section>
   <% provide :page_title, t('menu.main_page') %>
   <% currently_at t('menu.main_page') %>
-  <%= render 'home/title' %>
+  <%= render 'title' %>
   <div class='container mt-3'>
     <div class='row'>  
       <div class="col-8">
         <section class='row'>
           <div class="col p-3 border bg-light main_body card">
             <div class='card-body'>
-              <h3 class='card-title'><%= i18n_model_name(@experiences) %></h3>
+              <h3 class='card-title'><%= i18n_model_name(Experience.new) %></h3>
               <div class='card-text'>
-                <%= render 'home/experience' %>
+                <%= render partial: 'experience', collection: @experiences if @experiences.try(:any?) %>
+                <%= t('page.blank') unless @experiences.try(:any?) %>
+                <div class='my-2'>
+                  <%== pagy_bootstrap_nav @pagy_experience if @pagy_experience.pages > 1 %>
+                </div>
               </div>
             </div>
           <div>
         </section>
         <section class='row'>
-        <div class="col p-3 border bg-light main_body card">
+          <div class="col p-3 border bg-light main_body card">
             <div class='card-body'>
-              <h3 class='card-title'><%= i18n_model_name(@educations) %></h3>
+              <h3 class='card-title'><%= i18n_model_name(Education.new) %></h3>
               <div class='card-text'>
-                <%= render 'home/education' %>
+                <%= render partial: 'education', collection: @educations if @educations.try(:any?) %>
+                <%= t('page.blank') unless @educations.try(:any?) %>
               </div>
             </div>
           </div>
@@ -28,9 +33,13 @@
         <section class='row'>
           <div class="col p-3 border bg-light main_body card">
             <div class='card-body'>
-              <h3 class='card-title'><%= i18n_model_name(@projects, count: 2) %></h3>
+              <h3 class='card-title'><%= i18n_model_name(Project.new, count: 2) %></h3>
               <div class='card-text'>
-                <%= render 'home/projects' %>
+                <%= render partial: 'project', collection: @projects if @projects.try(:any?) %>
+                <%= t('page.blank') unless @projects.try(:any?) %>
+                <div class='my-2'>
+                  <%== pagy_bootstrap_nav @pagy_experience if @pagy_project.pages > 1 %>
+                </div>
               </div>
             </div>
           </div>
@@ -38,29 +47,34 @@
         <section class='row'>
           <div class="col p-3 border bg-light main_body card">
             <div class='card-body'>
-              <h3 class='card-title'><%= attribute_model(@personal_details, :about) %></h3>
+              <h3 class='card-title'><%= attribute_model(PersonalDetail.new, :about) %></h3>
               <div class='card-text'>
-                <%= render 'home/about' %>
+                <%= render 'about' if @personal_details.present? %>
+                <%= t('page.blank') unless @personal_details.try(:any?) %>
               </div>
             </div>
           </div>
         </section>
       </div>
-
       <div class="col-4">
         <section class='row'>
           <div class="col p-3 border bg-light main_body card">
             <div class='card-text'>
-              <%= render 'home/contacts' %>
+              <%= render 'contact' if @contact.present? %>
+              <%= t('page.blank') unless @contact.try(:any?) %>
             </div>
           </div>
         </section>
         <section class='row'>
           <div class="col p-3 border bg-light main_body card">
             <div class='card-body'>
-              <h3 class='card-title'><%= i18n_model_name(@skills, count: 2) %></h3>
+              <h3 class='card-title'><%= i18n_model_name(Skill.new, count: 2) %></h3>
               <div class='card-text'>
-                <%= render 'home/skill' %>
+                <div class='my-2'>
+                  <%== pagy_bootstrap_nav @pagy_skill if @pagy_skill.pages > 1 %>
+                </div>
+                <%= render partial: 'skill', collection: @skills if @skills.try(:any?) %>
+                <%= t('page.blank') unless @skills.try(:any?) %>
               </div>
             </div>
           </div>
@@ -68,9 +82,10 @@
         <section class='row'>
           <div class="col p-3 border bg-light main_body card">
             <div class='card-body'>
-              <h3 class='card-title'><%= i18n_model_name(@courses, count: 2) %></h3>
+              <h3 class='card-title'><%= i18n_model_name(Course.new, count: 2) %></h3>
               <div class='card-text'>
-                <%= render 'home/course' %>
+                <%= render partial: 'course', collection: @courses if @courses.try(:any?) %>
+                <%= t('page.blank') unless @courses.try(:any?) %>
               </div>
             </div>
           </div>
