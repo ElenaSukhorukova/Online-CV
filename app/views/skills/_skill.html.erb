@@ -1,12 +1,10 @@
-<section class='line my-4'>
-  <p>
-    <strong><%= skill.skillname %></strong>
-    <strong><%= skill.description %></strong>
-  </p>
-  <%= turbo_frame_tag "skill_#{skill.id}" do %>
+<article class='col line my-4'>
+  <%= turbo_frame_tag dom_id(skill) do %>
+    <p><strong><%= skill.skillname %></strong></p>
+    <p><%= simple_format skill.description %></p>
     <%= link_to t('link.edit', model: i18n_model_name(skill).downcase), edit_skill_path(skill),
-      class: "btn btn-outline-dark mb-4 mx-1" %>
+        class: "btn btn-outline-dark mb-4 mx-1" %>
   <% end %>
   <%= button_to t('submit.delete', model: i18n_model_name(skill).downcase), skill_path(skill), 
-    method: :delete, class: "btn btn-outline-dark mb-4 mx-1", :onclick => "return confirm('Are you sure?')", :remote => true %>  
-</section>
+      method: :delete, class: "btn btn-outline-dark mb-4 mx-1", :onclick => "return confirm('Are you sure?')", :remote => true %>  
+</article>

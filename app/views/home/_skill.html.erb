@@ -1,6 +1,4 @@
-<% @skills.each do |skill| %>
-  <section>
-    <h4><%= skill.skillname %></h4>
-    <p><%= skill.description %></p>
-  </section>
-<% end %>
+<article>
+  <h4><%= skill.skillname %></h4>
+  <p><%= simple_format skill.description %></p>
+</article>
