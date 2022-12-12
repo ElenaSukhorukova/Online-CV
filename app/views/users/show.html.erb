@@ -1,10 +1,24 @@
 <section class='container mt-3'>
   <% provide :page_title, t('menu.admin_page') %>
   <% currently_at t('menu.admin_page') %>
-  <h1 class='md-4'><%= t('page.admin_title') %></h1>
+  <h1 class='mb-4 mx-4'><%= t('page.admin_title') %></h1>
   <div class='row row-cols-2 mt-2'>
     <section class='card col mt-2 ms-4 card-position'>
-      <div class="card-body">
+      <div class="card-body p-5">
+        <h2 class="card-title mb-4"><%= i18n_model_name(@personal_detail) %></h2>
+        <div class= "card-text">
+          <%= turbo_frame_tag dom_id(@personal_detail) do %>
+            <%= link_to t('link.add_new', model: i18n_model_name(@personal_detail).downcase), 
+              new_user_personal_detail_path(@user), class: "btn btn-outline-dark mb-4" %>
+            <p>
+              <%= render @personal_details if @personal_details.present? %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </section>
+    <section class='card col mt-2 ms-4 card-position'>
+      <div class="card-body p-5">
       <h2 class="card-title mb-4"><%= i18n_model_name(@contact) %></h2>
         <div class= "card-text">
           <%= turbo_frame_tag dom_id(@contact) do %>
@@ -12,92 +26,88 @@
               new_user_contact_path(@user), class: "btn btn-outline-dark mb-4" %>
           <% end %>
             <p>
-            <%= render 'contacts/contact', contact: @contacts if @contacts.present? %>
+            <%= render @contacts if @contacts.present? %>
             </p>
         </div>
       </div>
     </section>
+  </div>
+  <div class='row'>
     <section class='card col mt-2 ms-4 card-position'>
-      <div class="card-body">
+      <div class="card-body p-5">
         <h2 class="card-title mb-4"><%= i18n_model_name(@course, count: 2) %></h2>
         <div class= "card-text">
           <%= turbo_frame_tag dom_id(@course) do %>
             <%= link_to t('link.add_new', model: i18n_model_name(@course).downcase), 
               new_user_course_path(@user), class: "btn btn-outline-dark mb-4" %>
           <% end %>
-            <p>
-              <%= render partial: 'courses/course', collection: @courses if @courses.present? %>
-            </p>
+          <div class='row row-cols-3'>
+              <%= render @courses if @courses.present? %>
+          </div>
         </div>
       </div>
     </section>
+  </div>
+  <div class='row'>
     <section class='card col mt-2 ms-4 card-position'>
-      <div class="card-body">
+      <div class="card-body p-5">
         <div class= "card-text">
           <h2 class="card-title mb-4"><%= i18n_model_name(@education) %></h2>
           <%= turbo_frame_tag dom_id(@education) do %>
             <%= link_to t('link.add_new', model: i18n_model_name(@education).downcase), 
               new_user_education_path(@user), class: "btn btn-outline-dark mb-4" %>
           <% end %>
-          <p>
-            <%= render partial: 'educations/education', collection: @educations if @educations.present? %>
-          </p>
+          <div class='row row-cols-3'>
+            <%= render @educations if @educations.present? %>
+          </div>
         </div>
       </div>
     </section>
+  </div>
+  <div class='row'>
     <section class='card col mt-2 ms-4 card-position'>
-      <div class="card-body">
+      <div class="card-body p-5">
         <h2 class="card-title mb-4"><%= i18n_model_name(@experience) %></h2>
         <div class= "card-text">
           <%= turbo_frame_tag dom_id(@experience) do %>
             <%= link_to t('link.add_new', model: i18n_model_name(@experience).downcase), 
-              new_user_experience_path(@user), class: "btn btn-outline-dark mb-4" %>
+                new_user_experience_path(@user), class: "btn btn-outline-dark mb-4" %>
           <% end %>
-          <p>
-            <%= render partial: 'experiences/experience', collection: @experiences if @experiences.present? %>
-          </p>
+          <div class='row row-cols-2'>
+            <%= render @experiences if @experiences.present? %>
+          </div>
         </div>
       </div>
     </section>
+  </div>
+  <div class='row'>
     <section class='card col mt-2 ms-4 card-position'>
-      <div class="card-body">
-        <h2 class="card-title mb-4"><%= i18n_model_name(@personal_detail) %></h2>
-        <div class= "card-text">
-          <%= turbo_frame_tag dom_id(@personal_detail) do %>
-            <%= link_to t('link.add_new', model: i18n_model_name(@personal_detail).downcase), 
-              new_user_personal_detail_path(@user), class: "btn btn-outline-dark mb-4" %>
-            <p>
-              <%= render 'personal_details/personal_detail', personal_detail: @personal_details if @personal_details.present? %>
-            </p>
-          <% end %>
-        </div>
-      </div>
-    </section>
-    <section class='card col mt-2 ms-4 card-position'>
-      <div class="card-body">
+      <div class="card-body p-5">
         <h2 class="card-title mb-4"><%= i18n_model_name(@project, count: 2) %></h2>
         <div class= "card-text">
           <%= turbo_frame_tag dom_id(@project) do %>
             <%= link_to t('link.add_new', model: i18n_model_name(@project).downcase), 
               new_user_project_path(@user), class: "btn btn-outline-dark mb-4" %>
-            <p>
-              <%= render partial: 'projects/project', collection: @projects if @projects.present? %>
-            </p>
+            <div class='row row-cols-2'>
+              <%= render @projects if @projects.present? %>
+          </div>
           <% end %>
         </div>
       </div>
     </section>
-    <section class='card col mt-2 ms-4 card-position'>
-      <div class="card-body">
+  </div>
+  <div class='row'>
+    <section class='card col mt-2 skill-admin'>
+      <div class="card-body p-5">
         <h2 class="card-title mb-4"><%= i18n_model_name(@skill, count: 2) %></h2>
         <div class= "card-text">
           <%= turbo_frame_tag dom_id(@skill) do %>
             <%= link_to t('link.add_new', model: i18n_model_name(@skill).downcase), 
-              new_user_skill_path(@user), class: "btn btn-outline-dark mb-4"  %>
+            new_user_skill_path(@user), class: "btn btn-outline-dark mb-4"  %>
           <% end %>
-          <p>
-            <%= render partial: 'skills/skill', collection: @skills if @skills.present? %>
-          </p>
+          <div class='row row-cols-3'>
+            <%= render @skills if @skills.present? %>
+          </div>
         </div>
       </div>
     </section>
