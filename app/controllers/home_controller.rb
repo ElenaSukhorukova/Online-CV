@@ -10,13 +10,13 @@ class HomeController < ApplicationController
   
   private
     def define_variables
-      @contacts = Contact.where(locale: locale.to_s).last
+      @contact = Contact.where(locale: locale.to_s).last
       @courses = Course.where(locale: locale.to_s).order(date_of_end: :desc)
-      @educations = Education.where(locale: locale.to_s).order(date_of_end: :desc)
-      @experiences = Experience.where(locale: locale.to_s).order(date_of_begin: :desc)
+      @pagy_skill, @skills = pagy Skill.where(locale: locale.to_s).order(:created_at), items: 4, page_param: :pagy_skill
       @personal_details = PersonalDetail.where(locale: locale.to_s).last
-      @projects = Project.where(locale: locale.to_s).order(created_at: :desc)
-      @skills = Skill.where(locale: locale.to_s).order(:created_at)
+      @educations = Education.where(locale: locale.to_s).order(date_of_end: :desc)
+      @pagy_experience, @experiences = pagy Experience.where(locale: locale.to_s).order(date_of_begin: :desc), items: 2, page_param: :pagy_experience
+      @pagy_project, @projects = pagy Project.where(locale: locale.to_s).order(created_at: :desc), items: 3, page_param: :pagy_project
       
       @user = User.last
     end
