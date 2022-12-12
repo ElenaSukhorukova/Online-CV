@@ -1,12 +1,10 @@
-<% @courses.each do |course| %>
-  <section>
-    <h4><%= course.coursename %>
-      <span class='title'>
-        ( <%= course.date_of_end.strftime('%Y') %> )
-      </span>
-    </h4>
-    <p>
-    <%= simple_format(course.description) %>
-    </p>
-  </section>
-<% end %>
+<article>
+  <h4><%= course.coursename %>
+    <span class='title'>
+      (<%= course.date_of_end.strftime('%Y') %>)
+    </span>
+  </h4>
+  <p class='justify'>
+    <%= simple_format course.description %>
+  </p>
+</article>
