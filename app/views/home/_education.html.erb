@@ -1,13 +1,11 @@
-<% @educations.each do |education| %>
-  <section>
-    <h4><%= education.field_of_study %>
-      <span class='title'>
-        ( <%= education.date_of_end.strftime('%Y') %> )
-      </span>
-    </h4>
-    <p>
-      <%= education.name_organization %>
-      <%= education.degree %>
-    </p>
-  </section>
-<% end %>
+<article>
+  <h4><%= education.field_of_study %>
+    <span class='title'>
+      ( <%= education.date_of_end.strftime('%Y') %> )
+    </span>
+  </h4>
+  <p>
+    <%= education.name_organization %>
+    <%= education.degree %>
+  </p>
+</article>
