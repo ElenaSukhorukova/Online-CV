@@ -3,7 +3,8 @@
   <% currently_at %>
   <h1 class='my-2'><%= t(".resend_unlock_instructions") %></h1>
 
-  <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), 
+      html: { method: :post }, data: { turbo: false }) do |f| %>
     <%= f.error_notification %>
     <%= f.full_error :unlock_token %>
 

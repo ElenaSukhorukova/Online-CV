@@ -3,7 +3,8 @@
   <% currently_at %>
   <h1 class='my-2'><%= t(".resend_confirmation_instructions") %></h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), 
+    html: { method: :post }, data: { turbo: false }) do |f| %>
     <%= f.error_notification %>
     <%= f.full_error :confirmation_token %>
 
