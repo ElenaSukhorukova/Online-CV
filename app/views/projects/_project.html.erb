@@ -1,31 +1,30 @@
-<section class='line my-4'>
-  <p class='project_title'>
-    <strong><i><%= project.title %></i></strong><br />
-  </p>
-  <p>
-    <% unless project.site.blank? %>
-      <strong><i><%= attribute_model(project, :site) %>&nbsp;</i></strong>
-      <%= link_to project.site, "#{project.site}", class: 'text-dark text-decoration-none', target: :_blank %>
-    <% end %>
-  </p>
-  <p>
-    <strong><i><%= attribute_model(project, :github) %>&nbsp;</i></strong>
-    <%= link_to project.github, "#{project.github}", class: 'text-dark text-decoration-none', target: :_blank %>
-  </p>
-  <p>
-    <strong><i><%= attribute_model(project, :description) %></i></strong>&nbsp;<%= project.description %>
-  </p>
-  <%# if project.previews.attached? %>
-    <%# project.previews.each do |img| %>
-    <%# <div class='img_block'> %>
-      <%#= image_tag img, class: "d-block img" %>
-    <%# </div> %>
+<article class='col line my-4'>
+  <%= turbo_frame_tag dom_id(project) do %>
+    <p class='project_title'>
+      <strong><i><%= project.title %></i></strong><br />
+    </p>
+    <p>
+      <% unless project.site.blank? %>
+        <strong><i><%= attribute_model(project, :site) %>:</i></strong>
+        <%= link_to project.site, "#{project.site}", class: 'text-dark text-decoration-none', target: :_blank %>
+      <% end %>
+    </p>
+    <p>
+      <strong><i><%= attribute_model(project, :github) %>:</i></strong>
+      <%= link_to project.github, "#{project.github}", class: 'text-dark text-decoration-none', target: :_blank %>
+    </p>
+    <p><strong><i><%= attribute_model(project, :description) %></i></strong>:</p>
+    <p><%= project.description %></p>
+    <%# if project.previews.attached? %>
+      <%# project.previews.each do |img| %>
+      <%# <div class='img_block'> %>
+        <%#= image_tag img, class: "d-block img" %>
+      <%# </div> %>
+      <%# end %>
     <%# end %>
-  <%# end %>
-  <%= turbo_frame_tag "project_#{project.id}" do %>
     <%= link_to t('link.edit', model: i18n_model_name(project).downcase), edit_project_path(project),
     class: "btn btn-outline-dark mb-4 mx-1" %>
   <% end %>
   <%= button_to t('submit.delete', model: i18n_model_name(project).downcase), project_path(project), 
     method: :delete, class: "btn btn-outline-dark mb-4 mx-1", :onclick => "return confirm('Are you sure?')", :remote => true %>
-</section>
+</article>
