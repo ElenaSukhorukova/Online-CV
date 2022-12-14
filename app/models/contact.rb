@@ -1,6 +1,6 @@
 class Contact < ApplicationRecord
   validates :address, presence: true
-  validates :email, presence: true, format: { with: /([\w\-\.])+@([\w\-\.]+\.)+([a-z]{2,4})/ }
+  validates :email, presence: true, 'valid_email_2/email': { mx: true }
   validates :telegram, presence: true, format: { with: /\A@.*/, message: "Telegram should begin from @" }
   validates :phone, presence: true, 
     format: { 
