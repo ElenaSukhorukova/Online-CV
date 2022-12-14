@@ -55,6 +55,8 @@ gem 'simple_form'
 gem "jsbundling-rails", "~> 1.0"
 gem "cssbundling-rails", "~> 1.1"
 gem 'pagy', '~> 5.10', '>= 5.10.1'
+gem 'draper', '~> 4.0'
+gem "valid_email2", '~> 4.0.4'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
