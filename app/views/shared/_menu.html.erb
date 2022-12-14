@@ -8,7 +8,7 @@
               <%= nav_tab t('menu.owner'), admin_path, role: 'button', 
                 class: "nav-link", current_page: current_page if controller_name == 'home' && action_name == 'index' %>     
             </li>
-            <% if action_name == 'admin' || :devise_controller? %>
+            <% if action_name == 'admin' || ['sessions', 'registrations'].include?(controller_name) %>
               <%= render partial: 'home/admin', locals: { current_page: current_page } %>
             <% end %>
           <% else %>
@@ -25,6 +25,8 @@
               current_page: current_page %>
             </li>
           <% end %>
+        </ul>
+        <ul class='nav mb-md-0'>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= t('submit.language') %>
@@ -32,16 +34,19 @@
             <ul class="dropdown-menu text-center">
               <li class="nav-item">
                 <%= link_to 'English', controller: controller_name, 
-                  action: action_name, locale: :en, class: "dropdown-item" %>
+                    action: action_name, locale: :en, class: "dropdown-item" %>
               </li>
+              <li><hr class='dropdown-divider'></li>
               <li class="nav-item">
                 <%= link_to 'Русский', controller: controller_name, 
-                  action: action_name, locale: :ru, class: "dropdown-item" %>
+                    action: action_name, locale: :ru, class: "dropdown-item" %>
               </li>
             </ul>
           </li>
         </ul>
       </div>
-    </naw>  
+    </nav>  
   </header>
 <% end %>
+
+
