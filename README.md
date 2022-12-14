@@ -4,16 +4,15 @@
 	<ul>
 		<li>Contacts</li>
 		<li>Education</li>
-		<li>Experience with duties and achievements</li>
+		<li>Experience</li>
 		<li>Courses</li>
 		<li>Personal data as a title, a position,full name, about and photo.</li>
 		<li>Projects</li>
-		<li>Skills with sources where a certain skill was received.</li>
+		<li>Skills</li>
 	</ul>
 
 <p>The user has an opportunity to create only one profile and get access to an admin page. On the admin page User can add personal data using two languages: English and Russian. The user can change language the application and see data in the chosen language. The last writing of Contacts and Personal data will be shown and all other wiriting will be added as a list.</p>
 <p>To get an access to sign up/sign in buttons the user should click a reference on the footer 'I am an owner of this site'</p>
-<p>The user should tune mailer in config/environments to confirm his mail or shut down confirmable in user's model.</p>
 
 <h5> An example working of the application you can see on my own Online CV https://onlinecv.onrender.com/</h5>
 <hr />
@@ -43,7 +42,7 @@
   	<li>Run <code>rails db:schema:load</code></li>
   	<li>Open http://localhost:3000/</li>
  </ol>
-
+<p>Also you can run rails db:seed to see how it works.</p>
 <b>
 	<p>Now I am lookin for a possition of RoR developer. If can help me, please, connect to me via one of this ways:</p>
 	<p>LinkedIn: https://www.linkedin.com/in/elenasukhorukova/</p>
