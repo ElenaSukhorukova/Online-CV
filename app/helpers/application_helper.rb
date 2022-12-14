@@ -1,5 +1,9 @@
 module ApplicationHelper
   include Pagy::Frontend
+
+  def pagination(obj)
+    pagy_bootstrap_nav(obj) if obj.pages > 1
+  end
   
   def i18n_model_name(model, count: 1)
     model.model_name.human(count: count)
