@@ -7,7 +7,7 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = @user.courses.build(course_params)
+    @course = @user.courses.build course_params
     
     if @course.save
       redirect_to user_path, 
@@ -22,7 +22,7 @@ class CoursesController < ApplicationController
   end
 
   def update
-    if @course.update(course_params)
+    if @course.update course_params
       redirect_to user_path,
         success: I18n.t('flash.update', model: @course.locale == 'ru' ? 
         i18n_model_name(@course) : i18n_model_name(@course).downcase)
@@ -42,7 +42,7 @@ class CoursesController < ApplicationController
   private
 
     def define_course!
-      @course = Course.find(params[:id])
+      @course = Course.find params[:id]
     end
 
     def course_params

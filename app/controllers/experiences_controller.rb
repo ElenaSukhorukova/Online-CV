@@ -7,7 +7,7 @@ class ExperiencesController < ApplicationController
   end
 
   def create
-    @experience = @user.experiences.build(experience_params)
+    @experience = @user.experiences.build experience_params
    
     if @experience.save
       redirect_to user_path, 
@@ -22,7 +22,7 @@ class ExperiencesController < ApplicationController
   end
 
   def update
-    if @experience.update(experience_params)
+    if @experience.update experience_params
       redirect_to user_path,
         success: I18n.t('flash.update', model: @experience.locale == 'ru' ? 
         i18n_model_name(@experience) : i18n_model_name(@experience).downcase)
@@ -42,7 +42,7 @@ class ExperiencesController < ApplicationController
   private
 
     def define_experience!
-      @experience = Experience.find(params[:id])
+      @experience = Experience.find params[:id]
     end
     
     def experience_params

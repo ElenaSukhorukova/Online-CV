@@ -7,7 +7,7 @@ class EducationsController < ApplicationController
   end
   
   def create
-    @education = @user.educations.build(education_params)
+    @education = @user.educations.build education_params
     
     if @education.save
       redirect_to user_path, 
@@ -22,7 +22,7 @@ class EducationsController < ApplicationController
   end
 
   def update
-    if @education.update(education_params)
+    if @education.update education_params
       redirect_to user_path, 
         success: I18n.t('flash.update', model: @education.locale == 'ru' ? 
         i18n_model_name(@education) : i18n_model_name(@education).downcase)
@@ -42,7 +42,7 @@ class EducationsController < ApplicationController
   private
 
     def find_variable!
-      @education = Education.find(params[:id])
+      @education = Education.find params[:id]
       @user = User.first
     end
     

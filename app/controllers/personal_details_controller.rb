@@ -8,7 +8,7 @@ class PersonalDetailsController < ApplicationController
   end
 
   def create
-    @personal_detail = @user.personal_details.build(personal_detail_params)
+    @personal_detail = @user.personal_details.build personal_detail_params
 
     if @personal_detail.save
       redirect_to user_path, 
@@ -23,7 +23,7 @@ class PersonalDetailsController < ApplicationController
   end
 
   def update
-    if @personal_detail.update(personal_detail_params)
+    if @personal_detail.update personal_detail_params
       redirect_to user_path,  
         success: I18n.t('flash_plural.update', model: @personal_detail.locale == 'ru' ? 
         i18n_model_name(@personal_detail) : i18n_model_name(@personal_detail).downcase)
@@ -43,16 +43,10 @@ class PersonalDetailsController < ApplicationController
   private
 
     def define_personal_detail!
-      @personal_detail = PersonalDetail.find(params[:id])
+      @personal_detail = PersonalDetail.find params[:id]
     end
 
     def personal_detail_params
       params.require(:personal_detail).permit(:photo, :full_name, :position, :about, :locale)
-    end
-
-    def chenge_full_name
-      @personal_detail = @user.personal_details.last
-      full_name = @personal_detail.full_name.split(' ').each{|n| n.capitalize!}.join(' ')
-      @personal_detail.update(full_name: full_name)
     end
 end

@@ -7,7 +7,7 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = @user.contacts.build(contact_params)
+    @contact = @user.contacts.build contact_params
     
     if @contact.save
       redirect_to user_path, 
@@ -22,7 +22,7 @@ class ContactsController < ApplicationController
   end
 
   def update
-    if @contact.update(contact_params)
+    if @contact.update contact_params
       redirect_to user_path, 
         success: I18n.t('flash_plural.update', model: @contact.locale == 'ru' ? 
         i18n_model_name(@contact) : i18n_model_name(@contact).downcase)
@@ -42,7 +42,7 @@ class ContactsController < ApplicationController
   private
 
     def define_contact!
-      @contact = Contact.find(params[:id])
+      @contact = Contact.find params[:id]
     end
 
     def contact_params
