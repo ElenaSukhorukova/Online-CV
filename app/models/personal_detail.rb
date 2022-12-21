@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PersonalDetail < ApplicationRecord
   validates :about, presence: true
   validates :full_name, presence: true, length: { within: 5..50 }

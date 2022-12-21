@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ExperiencesController < ApplicationController
   before_action :authenticate_user!
   before_action :define_experience!, except: %i[new create]

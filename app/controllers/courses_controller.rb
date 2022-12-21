@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :define_course!, except: %i[new create]

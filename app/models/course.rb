@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Course < ApplicationRecord
   validates :coursename, :description, presence: true
   validates :date_of_end, presence: true,

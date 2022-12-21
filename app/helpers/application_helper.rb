@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   include Pagy::Frontend
 
@@ -15,7 +17,7 @@ module ApplicationHelper
 
   def full_title(page_title = '')
     base_title = t('page.site_name')
-    page_title ? "#{page_title} | #{base_title}" : "#{base_title}"
+    page_title ? "#{page_title} | #{base_title}" : base_title.to_s
   end
 
   def currently_at(current_page = '')
@@ -26,7 +28,7 @@ module ApplicationHelper
     current_page = options.delete :current_page
     css_text = current_page == title ? 'text-success' : 'text-black'
     options[:class] = if options[:class]
-                        (options[:class] + ' ' + css_text)
+                        "#{options[:class]} #{css_text}"
                       else
                         css_text
                       end

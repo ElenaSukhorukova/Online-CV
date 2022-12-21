@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class PersonalDetailDecorator < ApplicationDecorator
   delegate_all
 
   def capitalize_full_name
-    full_name.split(' ').map(&:capitalize).join(' ')
+    full_name.split.map(&:capitalize).join(' ')
   end
 end

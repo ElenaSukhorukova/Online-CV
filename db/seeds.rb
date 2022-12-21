@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 unless User.first
   email = 'email@email.com'
   password = 'test123'

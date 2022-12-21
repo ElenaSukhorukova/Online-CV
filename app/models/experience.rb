@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Experience < ApplicationRecord
   validates :employer, :position, :description, presence: true
   validates :date_of_begin, presence: true, comparison: { less_than: Date.current,

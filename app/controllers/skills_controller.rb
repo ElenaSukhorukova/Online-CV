@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SkillsController < ApplicationController
   before_action :authenticate_user!
   before_action :define_skill!, except: %i[new create]

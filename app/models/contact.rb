@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Contact < ApplicationRecord
   validates :address, presence: true
   validates :email, presence: true, 'valid_email_2/email': { mx: true }

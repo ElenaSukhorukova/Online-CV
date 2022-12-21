@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PersonalDetailsController < ApplicationController
   before_action :authenticate_user!
   before_action :define_personal_detail!, except: %i[new create]

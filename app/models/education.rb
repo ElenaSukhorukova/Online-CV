@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Education < ApplicationRecord
   validates :name_organization, :degree, :field_of_study, presence: true
   validates :date_of_end, presence: true,

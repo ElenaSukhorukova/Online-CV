@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :define_project!, except: %i[new create]

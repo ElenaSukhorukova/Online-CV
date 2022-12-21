@@ -1,77 +1,55 @@
 # frozen_string_literal: true
 
-class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
-  before_action :configure_account_update_params, only: [:update]
-  before_action :check_existing_user, only: [:new]
+module Users
+  class RegistrationsController < Devise::RegistrationsController
+    before_action :configure_sign_up_params, only: [:create]
+    before_action :configure_account_update_params, only: [:update]
+    before_action :check_existing_user, only: [:new]
 
-  # GET /resource/sign_up
-  def new
-    super
-  end
+    # GET /resource/sign_up
 
-  # GET /resource/edit
-  def edit
-    super
-  end
+    # GET /resource/edit
 
-  # POST /resource
-  def create
-    super
-  end
+    # POST /resource
 
-  # PUT /resource
-  def update
-    super
-  end
+    # PUT /resource
 
-  # DELETE /resource
-  def destroy
-    super
-  end
+    # DELETE /resource
 
-  # GET /resource/cancel
-  # Forces the session data which is usually expired after sign
-  # in to be expired now. This is useful if the user wants to
-  # cancel oauth signing in/up in the middle of the process,
-  # removing all OAuth session data.
-  def cancel
-    super
-  end
+    # GET /resource/cancel
+    # Forces the session data which is usually expired after sign
+    # in to be expired now. This is useful if the user wants to
+    # cancel oauth signing in/up in the middle of the process,
+    # removing all OAuth session data.
 
-  protected
+    protected
 
-  def check_existing_user
-    build_resource
+    def check_existing_user
+      build_resource
 
-    if resource_user
-      redirect_to sign_in_path, danger: 'User alredy exists. Please sign in.'
-    else
-      render :new
+      if resource_user
+        redirect_to sign_in_path, danger: 'User alredy exists. Please sign in.'
+      else
+        render :new
+      end
     end
-  end
 
-  # If you have extra params to permit, append them to the sanitizer.
-  def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:locale])
-  end
+    # If you have extra params to permit, append them to the sanitizer.
+    def configure_sign_up_params
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:locale])
+    end
 
-  # If you have extra params to permit, append them to the sanitizer.
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:locale])
-  end
+    # If you have extra params to permit, append them to the sanitizer.
+    def configure_account_update_params
+      devise_parameter_sanitizer.permit(:account_update, keys: [:locale])
+    end
 
-  # The path used after sign up.
-  def after_sign_up_path_for(resource)
-    super(resource)
-  end
+    # The path used after sign up.
 
-  # The path used after sign up for inactive accounts.
-  def after_inactive_sign_up_path_for(resource)
-    super(resource)
-  end
+    # The path used after sign up for inactive accounts.
 
-  def resource_user
-    @resource ||= User.last
+    def resource_user
+      @resource ||= User.last
+    end
   end
 end

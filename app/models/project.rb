@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Project < ApplicationRecord
   validates :description, presence: true
   validates :title, presence: true, length: { within: 3..50 }
