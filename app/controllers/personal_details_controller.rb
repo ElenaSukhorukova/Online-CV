@@ -7,46 +7,54 @@ class PersonalDetailsController < ApplicationController
     @personal_detail = @user.personal_details.build
   end
 
+  def edit; end
+
   def create
     @personal_detail = @user.personal_details.build personal_detail_params
 
     if @personal_detail.save
-      redirect_to user_path, 
-        success: I18n.t('flash_plural.new', model: @personal_detail.locale == 'ru' ?
-        i18n_model_name(@personal_detail) : i18n_model_name(@personal_detail).downcase)
+      redirect_to user_path,
+                  success: I18n.t('flash_plural.new', model: if @personal_detail.locale == 'ru'
+                                                               i18n_model_name(@personal_detail)
+                                                             else
+                                                               i18n_model_name(@personal_detail).downcase
+                                                             end)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit
-  end
-
   def update
     if @personal_detail.update personal_detail_params
-      redirect_to user_path,  
-        success: I18n.t('flash_plural.update', model: @personal_detail.locale == 'ru' ? 
-        i18n_model_name(@personal_detail) : i18n_model_name(@personal_detail).downcase)
+      redirect_to user_path,
+                  success: I18n.t('flash_plural.update', model: if @personal_detail.locale == 'ru'
+                                                                  i18n_model_name(@personal_detail)
+                                                                else
+                                                                  i18n_model_name(@personal_detail).downcase
+                                                                end)
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    if @personal_detail.destroy
-      redirect_to user_path, 
-        success: I18n.t('flash_plural.destroy', model: @personal_detail.locale == 'ru' ? 
-        i18n_model_name(@personal_detail) : i18n_model_name(@personal_detail).downcase)
-    end
+    return unless @personal_detail.destroy
+
+    redirect_to user_path,
+                success: I18n.t('flash_plural.destroy', model: if @personal_detail.locale == 'ru'
+                                                                 i18n_model_name(@personal_detail)
+                                                               else
+                                                                 i18n_model_name(@personal_detail).downcase
+                                                               end)
   end
 
   private
 
-    def define_personal_detail!
-      @personal_detail = PersonalDetail.find params[:id]
-    end
+  def define_personal_detail!
+    @personal_detail = PersonalDetail.find params[:id]
+  end
 
-    def personal_detail_params
-      params.require(:personal_detail).permit(:photo, :full_name, :position, :about, :locale)
-    end
+  def personal_detail_params
+    params.require(:personal_detail).permit(:photo, :full_name, :position, :about, :locale)
+  end
 end

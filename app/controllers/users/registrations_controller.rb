@@ -10,13 +10,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  # POST /resource
-  def create
+  # GET /resource/edit
+  def edit
     super
   end
 
-  # GET /resource/edit
-  def edit
+  # POST /resource
+  def create
     super
   end
 
@@ -43,7 +43,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def check_existing_user
     build_resource
-    
+
     if resource_user
       redirect_to sign_in_path, danger: 'User alredy exists. Please sign in.'
     else

@@ -11,26 +11,26 @@ class ApplicationController < ActionController::Base
 
   protected
 
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:locale])
-    end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:locale])
+  end
 
-    def default_url_options
-      { locale: I18n.locale }
-    end
+  def default_url_options
+    { locale: I18n.locale }
+  end
 
-    def set_locale
-      I18n.locale = extract_locale || I18n.default_locale
-    end
+  def set_locale
+    I18n.locale = extract_locale || I18n.default_locale
+  end
 
-    def extract_locale
-      parsed_locale = params[:locale]
-      I18n.available_locales.map(&:to_s).include?(parsed_locale) ? 
-        parsed_locale.to_sym : 
-        nil
-    end
+  def extract_locale
+    parsed_locale = params[:locale]
+    return unless I18n.available_locales.map(&:to_s).include?(parsed_locale)
 
-    def define_user
-      @user = User.first
-    end
+    parsed_locale.to_sym
+  end
+
+  def define_user
+    @user = User.first
+  end
 end

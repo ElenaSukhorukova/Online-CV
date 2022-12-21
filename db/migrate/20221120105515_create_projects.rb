@@ -7,7 +7,7 @@ class CreateProjects < ActiveRecord::Migration[7.0]
       t.text :description
       t.string :locale
       t.belongs_to :user, foreign_key: true
-      
+
       t.timestamps
     end
   end

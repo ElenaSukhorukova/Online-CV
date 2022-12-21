@@ -4,9 +4,9 @@ class CreateCourses < ActiveRecord::Migration[7.0]
       t.string :coursename
       t.text :description
       t.date :date_of_end
-      t.string :locale    
+      t.string :locale
       t.belongs_to :user, foreign_key: true
-      
+
       t.timestamps
     end
   end

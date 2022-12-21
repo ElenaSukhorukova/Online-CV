@@ -15,8 +15,8 @@ unless Contact.where(locale: 'en').any?
   locale = 'en'
   user_id = User.last.id
 
-  Contact.create address: address, email: email, phone: phone, linkedin: linkedin, 
-                  github: github, telegram: telegram, locale: locale, user_id: user_id
+  Contact.create address: address, email: email, phone: phone, linkedin: linkedin,
+                 github: github, telegram: telegram, locale: locale, user_id: user_id
 end
 
 unless Contact.where(locale: 'ru').any?
@@ -29,8 +29,8 @@ unless Contact.where(locale: 'ru').any?
   locale = 'ru'
   user_id = User.last.id
 
-  Contact.create address: address, email: email, phone: phone, linkedin: linkedin, 
-  github: github, telegram: telegram, locale: locale, user_id: user_id
+  Contact.create address: address, email: email, phone: phone, linkedin: linkedin,
+                 github: github, telegram: telegram, locale: locale, user_id: user_id
 end
 
 unless PersonalDetail.where(locale: 'en').any?
@@ -39,23 +39,23 @@ unless PersonalDetail.where(locale: 'en').any?
   about = Faker::Lorem.paragraph(sentence_count: 12, supplemental: true, random_sentences_to_add: 4)
   locale = 'en'
   user_id = User.last.id
-  
-  PersonalDetail.create full_name: full_name, position: position, 
-  about: about, locale: locale, user_id: user_id
+
+  PersonalDetail.create full_name: full_name, position: position,
+                        about: about, locale: locale, user_id: user_id
 end
 
 unless PersonalDetail.where(locale: 'ru').any?
   full_name = 'Иванова Полина Матвеевна'
   position = 'программист'
-  about = "Равным образом повышение уровня гражданского сознания обеспечивает актуальность всесторонне сбалансированных нововведений. Задача организации, в особенности же курс на социально-ориентированный национальный проект в значительной степени обуславливает создание дальнейших направлений развитая системы массового участия? С другой стороны социально-экономическое развитие в значительной степени обуславливает создание модели развития."
+  about = 'Равным образом повышение уровня гражданского сознания обеспечивает актуальность всесторонне сбалансированных нововведений. Задача организации, в особенности же курс на социально-ориентированный национальный проект в значительной степени обуславливает создание дальнейших направлений развитая системы массового участия? С другой стороны социально-экономическое развитие в значительной степени обуславливает создание модели развития.'
   locale = 'ru'
   user_id = User.last.id
-  
-  PersonalDetail.create full_name: full_name, position: position, 
-  about: about, locale: locale, user_id: user_id
+
+  PersonalDetail.create full_name: full_name, position: position,
+                        about: about, locale: locale, user_id: user_id
 end
 
-(8 - Skill.where(locale: 'en').count).times do 
+(8 - Skill.where(locale: 'en').count).times do
   skill = Faker::Job.key_skill
   description = Faker::Lorem.paragraph(sentence_count: 3, supplemental: true, random_sentences_to_add: 4)
   user_id = User.last.id
@@ -66,7 +66,7 @@ end
 
 (8 - Skill.where(locale: 'ru').count).times do |index|
   skill = "Навык #{index}"
-  description = "Не длинное описание навыка. Где получен. Какой уровень"
+  description = 'Не длинное описание навыка. Где получен. Какой уровень'
   user_id = User.last.id
   locale = 'ru'
 
@@ -80,18 +80,18 @@ end
   locale = 'en'
   user_id = User.last.id
 
-  Course.create coursename: coursename, description: description, 
+  Course.create coursename: coursename, description: description,
                 date_of_end: date_of_end, locale: locale, user_id: user_id
 end
 
 (5 - Course.where(locale: 'ru').count).times do |index|
   coursename = "Курс № #{index}"
-  description = "Не длинное описание курса. Какие технологии были изучены."
+  description = 'Не длинное описание курса. Какие технологии были изучены.'
   date_of_end = Faker::Date.backward(days: 14)
   locale = 'ru'
   user_id = User.last.id
 
-  Course.create coursename: coursename, description: description, 
+  Course.create coursename: coursename, description: description,
                 date_of_end: date_of_end, locale: locale, user_id: user_id
 end
 
@@ -102,10 +102,10 @@ end
   date_of_end = Faker::Date.backward(days: 5)
   locale = 'en'
   user_id = User.last.id
-  
-  Education.create name_organization: name_organization, degree: degree, 
-                    field_of_study: field_of_study, date_of_end: date_of_end, 
-                    locale: locale, user_id: user_id
+
+  Education.create name_organization: name_organization, degree: degree,
+                   field_of_study: field_of_study, date_of_end: date_of_end,
+                   locale: locale, user_id: user_id
 end
 
 (2 - Education.where(locale: 'ru').count).times do |index|
@@ -115,10 +115,10 @@ end
   date_of_end = Faker::Date.backward(days: 5)
   locale = 'ru'
   user_id = User.last.id
-  
-  Education.create name_organization: name_organization, degree: degree, 
-                    field_of_study: field_of_study, date_of_end: date_of_end, 
-                    locale: locale, user_id: user_id
+
+  Education.create name_organization: name_organization, degree: degree,
+                   field_of_study: field_of_study, date_of_end: date_of_end,
+                   locale: locale, user_id: user_id
 end
 
 (4 - Experience.where(locale: 'en').count).times do
@@ -131,7 +131,7 @@ end
   user_id = User.last.id
 
   Experience.create employer: employer, position: position, description: description,
-                    date_of_begin: date_of_begin, date_of_end: date_of_end, 
+                    date_of_begin: date_of_begin, date_of_end: date_of_end,
                     locale: locale, user_id: user_id
 end
 
@@ -140,12 +140,12 @@ end
   position = "Должность #{index}"
   date_of_begin = Faker::Date.backward(days: 30)
   date_of_end = Faker::Date.backward(days: 2)
-  description = "Длинное описание рабочих обязанностей. <p>Перечень используемых технологий</p><p>Технология 1</p><p>Технология 2</p><p>Технология 3</p>"
+  description = 'Длинное описание рабочих обязанностей. <p>Перечень используемых технологий</p><p>Технология 1</p><p>Технология 2</p><p>Технология 3</p>'
   locale = 'ru'
   user_id = User.last.id
 
   Experience.create employer: employer, position: position, description: description,
-                    date_of_begin: date_of_begin, date_of_end: date_of_end, 
+                    date_of_begin: date_of_begin, date_of_end: date_of_end,
                     locale: locale, user_id: user_id
 end
 
@@ -157,7 +157,7 @@ end
   locale = 'en'
   user_id = User.last.id
 
-  Project.create title: title, site: site, github: github, description: 
+  Project.create title: title, site: site, github: github, description:
                   description, locale: locale, user_id: user_id
 end
 
@@ -165,10 +165,10 @@ end
   title = "Название проекта #{index}"
   site = 'https://github.com/'
   github = 'https://github.com/'
-  description = "Краткое описание проекта. Использованные технологии. "
+  description = 'Краткое описание проекта. Использованные технологии. '
   locale = 'ru'
   user_id = User.last.id
 
-  Project.create title: title, site: site, github: github, description: 
+  Project.create title: title, site: site, github: github, description:
                   description, locale: locale, user_id: user_id
 end
