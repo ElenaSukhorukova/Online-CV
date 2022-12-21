@@ -5,10 +5,13 @@ class Project < ApplicationRecord
   validates :title, presence: true, length: { within: 3..50 }
   validates :github, presence: true,
                      format: {
-                       with: %r{(((http(s?)://)+(www\.)?)|(www\.))?+[a-zA-Z0-9.\-_]+(\.[a-zA-Z]{2,3})+(/[a-zA-Z0-9_\-\s./?%\#&=]*)?},
-                       message: 'should begin from one of www, http://, https:// and has end domain.com/org/ru(or another)'
+                       with: %r{(((http(s?)://)+(www\.)?)|(www\.))?+
+                               [a-zA-Z0-9.\-_]+(\.[a-zA-Z]{2,3})+
+                               (/[a-zA-Z0-9_\-\s./?%\#&=]*)?}
                      }
 
   # has_many_attached :previews
   belongs_to :user
+
+  scope :meny_records, -> { where(locale: I18n.locale.to_s).order(created_at: :desc) }
 end

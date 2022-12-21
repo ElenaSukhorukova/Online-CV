@@ -14,39 +14,30 @@ class ContactsController < ApplicationController
     @contact = @user.contacts.build contact_params
 
     if @contact.save
-      redirect_to user_path,
-                  success: I18n.t('flash_plural.new', model: if @contact.locale == 'ru'
-                                                               i18n_model_name(@contact)
-                                                             else
-                                                               i18n_model_name(@contact).downcase
-                                                             end)
-    else
-      render :new, status: :unprocessable_entity
+      return redirect_to user_path,
+                         success: I18n.t('flash_plural.new',
+                                         model: flash_locale(@contact))
     end
+
+    render :new, status: :unprocessable_entity
   end
 
   def update
     if @contact.update contact_params
-      redirect_to user_path,
-                  success: I18n.t('flash_plural.update', model: if @contact.locale == 'ru'
-                                                                  i18n_model_name(@contact)
-                                                                else
-                                                                  i18n_model_name(@contact).downcase
-                                                                end)
-    else
-      render :edit, status: :unprocessable_entity
+      return redirect_to user_path,
+                         success: I18n.t('flash_plural.update',
+                                         model: flash_locale(@contact))
     end
+
+    render :edit, status: :unprocessable_entity
   end
 
   def destroy
     return unless @contact.destroy
 
     redirect_to user_path,
-                success: I18n.t('flash_plural.destroy', model: if @contact.locale == 'ru'
-                                                                 i18n_model_name(@contact)
-                                                               else
-                                                                 i18n_model_name(@contact).downcase
-                                                               end)
+                success: I18n.t('flash_plural.destroy',
+                                model: flash_locale(@contact))
   end
 
   private
@@ -56,6 +47,7 @@ class ContactsController < ApplicationController
   end
 
   def contact_params
-    params.require(:contact).permit(:address, :email, :linkedin, :github, :phone, :telegram, :locale)
+    params.require(:contact).permit(:address, :email, :linkedin, :github,
+                                    :phone, :telegram, :locale)
   end
 end

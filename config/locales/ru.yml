@@ -92,6 +92,35 @@ ru:
         skillname: "Название навыка"
         description: 'Описание'
         locale: 'Язык'
+    errors:
+      models:
+        contact:
+          attributes:
+            telegram:
+              invalid: 'должен начинаться @'
+            linkedin:
+              invalid: 'должен начинаться www, http://, https:// и заканчиваться domain.com/org/ru(или др.)'
+            github:
+              invalid: 'должен начинаться www, http://, https:// и заканчиваться domain.com/org/ru(или др.)'
+        course:
+          attributes:
+            date_of_end:
+              invalid: 'Формат даты неправильный'
+        education:
+          attributes:
+            date_of_end:
+              invalid: 'Формат даты неправильный'
+        experiences:
+          attributes:
+            date_of_begin:
+              invalid: 'Формат даты неправильный'
+            date_of_end:
+              invalid: 'Формат даты неправильный'
+              wrong_date: 'год начала должен быть меньше года окончания'
+        project:
+          attributes:
+            github: 
+              invalid: 'должен начинаться www, http://, https:// и заканчиваться domain.com/org/ru(или др.)'
   submit:
     create_one: "Добавить %{model}"
     create_many: "Добавить %{model}"

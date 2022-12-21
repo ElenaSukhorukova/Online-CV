@@ -18,12 +18,12 @@ class UsersController < ApplicationController
   private
 
   def define_variables!
-    @contacts = Contact.where(locale: locale.to_s).last
-    @courses = Course.where(locale: locale.to_s).order(date_of_end: :desc)
-    @educations = Education.where(locale: locale.to_s).order(date_of_end: :desc)
-    @experiences = Experience.where(locale: locale.to_s).order(date_of_begin: :desc)
-    @personal_details = PersonalDetail.where(locale: locale.to_s).last
-    @projects = Project.where(locale: locale.to_s).order(created_at: :desc)
-    @skills = Skill.where(locale: locale.to_s).order(:created_at)
+    @contacts = Contact.one_record
+    @courses = Course.meny_records
+    @educations = Education.meny_records
+    @experiences = Experience.meny_records
+    @personal_details = PersonalDetail.one_record
+    @projects = Project.meny_records
+    @skills = Skill.meny_records
   end
 end

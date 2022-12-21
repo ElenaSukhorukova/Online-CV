@@ -16,38 +16,29 @@ class PersonalDetailsController < ApplicationController
 
     if @personal_detail.save
       redirect_to user_path,
-                  success: I18n.t('flash_plural.new', model: if @personal_detail.locale == 'ru'
-                                                               i18n_model_name(@personal_detail)
-                                                             else
-                                                               i18n_model_name(@personal_detail).downcase
-                                                             end)
-    else
-      render :new, status: :unprocessable_entity
+                  success: I18n.t('flash_plural.new',
+                                  model: flash_locale(@personal_detail))
     end
+
+    render :new, status: :unprocessable_entity
   end
 
   def update
     if @personal_detail.update personal_detail_params
       redirect_to user_path,
-                  success: I18n.t('flash_plural.update', model: if @personal_detail.locale == 'ru'
-                                                                  i18n_model_name(@personal_detail)
-                                                                else
-                                                                  i18n_model_name(@personal_detail).downcase
-                                                                end)
-    else
-      render :edit, status: :unprocessable_entity
+                  success: I18n.t('flash_plural.update',
+                                  model: flash_locale(@personal_detail))
     end
+
+    render :edit, status: :unprocessable_entity
   end
 
   def destroy
     return unless @personal_detail.destroy
 
     redirect_to user_path,
-                success: I18n.t('flash_plural.destroy', model: if @personal_detail.locale == 'ru'
-                                                                 i18n_model_name(@personal_detail)
-                                                               else
-                                                                 i18n_model_name(@personal_detail).downcase
-                                                               end)
+                success: I18n.t('flash_plural.destroy',
+                                model: flash_locale(@personal_detail))
   end
 
   private

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CreateContacts < ActiveRecord::Migration[7.0]
+  # rubocop:disable Metrics/MethodLength
   def change
     create_table :contacts do |t|
       t.text :address
@@ -15,4 +16,5 @@ class CreateContacts < ActiveRecord::Migration[7.0]
       t.timestamps
     end
   end
+  # rubocop:enable Metrics/MethodLength
 end

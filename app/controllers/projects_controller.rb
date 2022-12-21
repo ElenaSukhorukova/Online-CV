@@ -15,11 +15,8 @@ class ProjectsController < ApplicationController
 
     if @project.save
       redirect_to user_path,
-                  success: I18n.t('flash.new', model: if @project.locale == 'ru'
-                                                        i18n_model_name(@project)
-                                                      else
-                                                        i18n_model_name(@project).downcase
-                                                      end)
+                  success: I18n.t('flash.new',
+                                  model: flash_locale(@project))
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,11 +25,8 @@ class ProjectsController < ApplicationController
   def update
     if @project.update(project_params)
       redirect_to user_path,
-                  success: I18n.t('flash.update', model: if @project.locale == 'ru'
-                                                           i18n_model_name(@project)
-                                                         else
-                                                           i18n_model_name(@project).downcase
-                                                         end)
+                  success: I18n.t('flash.update',
+                                  model: flash_locale(@project))
     else
       render :edit, status: :unprocessable_entity
     end
@@ -42,11 +36,8 @@ class ProjectsController < ApplicationController
     return unless @project.destroy
 
     redirect_to user_path,
-                success: I18n.t('flash.destroy', model: if @project.locale == 'ru'
-                                                          i18n_model_name(@project)
-                                                        else
-                                                          i18n_model_name(@project).downcase
-                                                        end)
+                success: I18n.t('flash.destroy',
+                                model: flash_locale(@project))
   end
 
   private
@@ -56,6 +47,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:title, :site, :github, :description, :locale) # , previews: [])
+    params.require(:project).permit(:title, :site, :github,
+                                    :description, :locale)
   end
 end

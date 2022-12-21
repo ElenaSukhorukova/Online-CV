@@ -6,27 +6,33 @@
     </p>
     <p>
       <i class="bi bi-envelope-at-fill"></i>
-      <%= link_to contact.email, "mailto: #{contact.email}", class: 'text-dark text-decoration-none short_text' %>
+      <%= link_to contact.email, "mailto: #{contact.email}", 
+          class: 'text-dark text-decoration-none short_text' %>
     </p>
     <p>
       <i class="bi bi-linkedin"></i>
-      <%= link_to contact.linkedin, "#{contact.linkedin}", class: 'text-dark text-decoration-none short_text', target: :_blank %>
+      <%= link_to contact.linkedin, "#{contact.linkedin}", 
+          class: 'text-dark text-decoration-none short_text', target: :_blank %>
     </p>
     <p>
       <i class="bi bi-github"></i>
-      <%= link_to contact.github, "#{contact.github}", class: 'text-dark text-decoration-none short_text', target: :_blank %>
+      <%= link_to contact.github, "#{contact.github}", 
+          class: 'text-dark text-decoration-none short_text', target: :_blank %>
     </p>
     <p>
       <i class="bi bi-telephone-fill"></i>
-      <%= link_to number_to_phone(contact.phone, country_code: 1), "tel:#{contact.phone}", class: 'text-dark text-decoration-none' %>
+      <%= link_to number_to_phone(contact.phone, country_code: contact.phone.first), 
+          "tel:#{contact.phone}", class: 'text-dark text-decoration-none' %>
     </p>
     <p>
       <i class="bi bi-telegram"></i>
-      <%= link_to contact.telegram, "https://t.me/#{contact.telegram.delete('@')}", class: 'text-dark text-decoration-none', target: :_blank %>
+      <%= link_to contact.telegram, "https://t.me/#{contact.telegram.delete('@')}", 
+          class: 'text-dark text-decoration-none', target: :_blank %>
     </p>
     <%= link_to t('link.edit', model: i18n_model_name(contact).downcase), edit_contact_path(contact), 
         class: "btn btn-outline-dark mb-4 mx-1" %>
   <% end %>
     <%= button_to t('submit.delete', model: i18n_model_name(contact).downcase), contact_path(contact), 
-        method: :delete, class: "btn btn-outline-dark mb-4 mx-1", :onclick => "return confirm('Are you sure?')", :remote => true %>
+        method: :delete, class: "btn btn-outline-dark mb-4 mx-1", 
+        :onclick => "return confirm('Are you sure?')", :remote => true %>
 </section>

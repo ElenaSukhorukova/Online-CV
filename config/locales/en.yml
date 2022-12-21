@@ -84,6 +84,36 @@ en:
         skillname: "Skill's name"
         description: 'Description'
         locale: 'Language'
+    errors:
+      models:
+        contact:
+          attributes:
+            telegram:
+              invalid: 'should begin from @'
+            linkedin:
+              invalid: 'should begin from one of www, http://, https:// and has end domain.com/org/ru(or another)'
+            github:
+              invalid: 'should begin from one of www, http://, https:// and has end domain.com/org/ru(or another)'
+        course:
+          attributes:
+            date_of_end:
+              invalid: 'A format of date is not right'
+        education:
+          attributes:
+            date_of_end:
+              invalid: 'A format of date is not right'
+        experiences:
+          attributes:
+            date_of_begin:
+              invalid: 'A format of date is not right'
+            date_of_end:
+              invalid: 'A format of date is not right'
+              wrong_date: 'a year of date of the end should be less than year of date of the beging'
+        project:
+          attributes:
+            github: 
+              invalid: 'should begin from one of www, http://, https:// and has end domain.com/org/ru(or another)'
+
   submit:
     create_one: "Write down a new %{model}"
     create_many: "Write down %{model}"

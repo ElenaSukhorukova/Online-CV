@@ -1,19 +1,18 @@
 # frozen_string_literal: true
 
 class Contact < ApplicationRecord
+  regex_site =  Regexp.new('(((http(s?)://)+(www\.)?)|(www\.))?+' \
+                           '[a-zA-Z0-9.\-_]+(\.[a-zA-Z]{2,3})+(/[a-zA-Z0-9_\-\s./?%\#&=]*)?')
   validates :address, presence: true
   validates :email, presence: true, 'valid_email_2/email': { mx: true }
-  validates :telegram, presence: true, format: { with: /\A@.*/, message: 'Telegram should begin from @' }
-  validates :phone, presence: true,
-                    format: {
-                      with: /(\d|\+\d)+\d{10}/,
-                      message: 'A phone number should be 11 numbers'
-                    }
+  validates :telegram, presence: true, format: { with: /\A@.*/ }
+  validates :phone, presence: true, length: { is: 11 }
   validates :linkedin, :github, presence: true,
                                 format: {
-                                  with: %r{(((http(s?)://)+(www\.)?)|(www\.))?+[a-zA-Z0-9.\-_]+(\.[a-zA-Z]{2,3})+(/[a-zA-Z0-9_\-\s./?%\#&=]*)?},
-                                  message: 'should begin from one of www, http://, https:// and has end domain.com/org/ru(or another)'
+                                  with: regex_site
                                 }
 
   belongs_to :user
+
+  scope :one_record, -> { where(locale: I18n.locale.to_s).last }
 end

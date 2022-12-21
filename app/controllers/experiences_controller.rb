@@ -15,38 +15,29 @@ class ExperiencesController < ApplicationController
 
     if @experience.save
       redirect_to user_path,
-                  success: I18n.t('flash.new', model: if @experience.locale == 'ru'
-                                                        i18n_model_name(@experience)
-                                                      else
-                                                        i18n_model_name(@experience).downcase
-                                                      end)
-    else
-      render :new, status: :unprocessable_entity
+                  success: I18n.t('flash.new',
+                                  model: flash_locale(@experience))
     end
+
+    render :new, status: :unprocessable_entity
   end
 
   def update
     if @experience.update experience_params
       redirect_to user_path,
-                  success: I18n.t('flash.update', model: if @experience.locale == 'ru'
-                                                           i18n_model_name(@experience)
-                                                         else
-                                                           i18n_model_name(@experience).downcase
-                                                         end)
-    else
-      render :edit, status: :unprocessable_entity
+                  success: I18n.t('flash.update',
+                                  model: flash_locale(@experience))
     end
+
+    render :edit, status: :unprocessable_entity
   end
 
   def destroy
     return unless @experience.destroy
 
     redirect_to user_path,
-                success: I18n.t('flash.destroy', model: if @experience.locale == 'ru'
-                                                          i18n_model_name(@experience)
-                                                        else
-                                                          i18n_model_name(@experience).downcase
-                                                        end)
+                success: I18n.t('flash.destroy',
+                                model: flash_locale(@experience))
   end
 
   private
@@ -56,6 +47,7 @@ class ExperiencesController < ApplicationController
   end
 
   def experience_params
-    params.require(:experience).permit(:employer, :position, :date_of_begin, :date_of_end, :description, :locale)
+    params.require(:experience).permit(:employer, :position, :date_of_begin,
+                                       :date_of_end, :description, :locale)
   end
 end

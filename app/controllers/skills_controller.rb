@@ -11,42 +11,33 @@ class SkillsController < ApplicationController
   def edit; end
 
   def create
-    @skill = @user.skills.build(skill_params)
+    @skill = @user.skills.build skill_params
 
     if @skill.save
       redirect_to user_path,
-                  success: I18n.t('flash.new', model: if @skill.locale == 'ru'
-                                                        i18n_model_name(@skill)
-                                                      else
-                                                        i18n_model_name(@skill).downcase
-                                                      end)
-    else
-      render :new, status: :unprocessable_entity
+                  success: I18n.t('flash.new',
+                                  model: flash_locale(@skill))
     end
+
+    render :new, status: :unprocessable_entity
   end
 
   def update
-    if @skill.update(skill_params)
+    if @skill.update skill_params
       redirect_to user_path,
-                  success: I18n.t('flash.update', model: if @skill.locale == 'ru'
-                                                           i18n_model_name(@skill)
-                                                         else
-                                                           i18n_model_name(@skill).downcase
-                                                         end)
-    else
-      render :edit, status: :unprocessable_entity
+                  success: I18n.t('flash.update',
+                                  model: flash_locale(@skill))
     end
+
+    render :edit, status: :unprocessable_entity
   end
 
   def destroy
     return unless @skill.destroy
 
     redirect_to user_path,
-                success: I18n.t('flash.destroy', model: if @skill.locale == 'ru'
-                                                          i18n_model_name(@skill)
-                                                        else
-                                                          i18n_model_name(@skill).downcase
-                                                        end)
+                success: I18n.t('flash.destroy',
+                                model: flash_locale(@skill))
   end
 
   private

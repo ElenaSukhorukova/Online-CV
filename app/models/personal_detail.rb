@@ -6,4 +6,6 @@ class PersonalDetail < ApplicationRecord
   validates :position, presence: true, length: { within: 5..50 }
 
   belongs_to :user
+
+  scope :one_record, -> { where(locale: I18n.locale.to_s).last }
 end

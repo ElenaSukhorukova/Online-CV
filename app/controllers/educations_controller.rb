@@ -15,38 +15,29 @@ class EducationsController < ApplicationController
 
     if @education.save
       redirect_to user_path,
-                  success: I18n.t('flash.new', model: if @education.locale == 'ru'
-                                                        i18n_model_name(@education)
-                                                      else
-                                                        i18n_model_name(@education).downcase
-                                                      end)
-    else
-      render :new, status: :unprocessable_entity
+                  success: I18n.t('flash.new',
+                                  model: flash_locale(@education))
     end
+
+    render :new, status: :unprocessable_entity
   end
 
   def update
     if @education.update education_params
       redirect_to user_path,
-                  success: I18n.t('flash.update', model: if @education.locale == 'ru'
-                                                           i18n_model_name(@education)
-                                                         else
-                                                           i18n_model_name(@education).downcase
-                                                         end)
-    else
-      render :edit, status: :unprocessable_entity
+                  success: I18n.t('flash.update',
+                                  model: flash_locale(@education))
     end
+
+    render :edit, status: :unprocessable_entity
   end
 
   def destroy
     return unless @education.destroy
 
     redirect_to user_path,
-                success: I18n.t('flash.destroy', model: if @education.locale == 'ru'
-                                                          i18n_model_name(@education)
-                                                        else
-                                                          i18n_model_name(@education).downcase
-                                                        end)
+                success: I18n.t('flash.destroy',
+                                model: flash_locale(@education))
   end
 
   private
@@ -57,6 +48,7 @@ class EducationsController < ApplicationController
   end
 
   def education_params
-    params.require(:education).permit(:name_organization, :degree, :field_of_study, :date_of_end, :locale)
+    params.require(:education).permit(:name_organization, :degree,
+                                      :field_of_study, :date_of_end, :locale)
   end
 end

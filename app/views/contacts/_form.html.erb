@@ -1,13 +1,14 @@
 <%= simple_form_for model, method: method do |f| %>
-  <%= f.input :address %><br />
-  <%= f.input :email %><br />
-  <%= f.input :phone %><br />
-  <%= f.input :linkedin %><br />
-  <%= f.input :github %><br />
-  <%= f.input :telegram %><br />
-  <%= f.input :locale, as: :radio_buttons, collection: Education::VALID_LOCALES, 
-                                            item_wrapper_class: 'inline' %>
-  <%= f.button :submit, f.object.new_record? ? t('submit.create_many', model: i18n_model_name(f.object).downcase) 
+  <%= f.input :address %>
+  <%= f.input :email %>
+  <%= f.input :phone %>
+  <%= f.input :linkedin %>
+  <%= f.input :github %>
+  <%= f.input :telegram %>
+  <%= f.input :locale, as: :radio_buttons, 
+                       collection: Education::VALID_LOCALES, 
+                       item_wrapper_class: 'inline' %>
+  <%= f.button :submit, f.object.new_record? ? t('submit.create_many', model: i18n_model_name(f.object).downcase)
                                                 : t('submit.edit', model: i18n_model_name(f.object).downcase), 
                                                 class: "btn btn-outline-dark my-2 btn-sm" %>
   <%= render 'shared/cancel_button' if f.object.persisted? %>

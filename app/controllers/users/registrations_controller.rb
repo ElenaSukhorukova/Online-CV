@@ -6,22 +6,6 @@ module Users
     before_action :configure_account_update_params, only: [:update]
     before_action :check_existing_user, only: [:new]
 
-    # GET /resource/sign_up
-
-    # GET /resource/edit
-
-    # POST /resource
-
-    # PUT /resource
-
-    # DELETE /resource
-
-    # GET /resource/cancel
-    # Forces the session data which is usually expired after sign
-    # in to be expired now. This is useful if the user wants to
-    # cancel oauth signing in/up in the middle of the process,
-    # removing all OAuth session data.
-
     protected
 
     def check_existing_user
