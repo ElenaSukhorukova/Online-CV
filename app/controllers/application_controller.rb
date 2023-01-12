@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
-  helper_method :i18n_model_name
   before_action :define_user
 
   add_flash_types :info, :danger, :warning, :success, :alert, :notice
