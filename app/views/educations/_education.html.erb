@@ -1,16 +1,16 @@
-<article class='col line my-4'>
+<article class='col my-4'>
   <%= turbo_frame_tag dom_id(education) do %>
     <p>
       <strong><i><%= attribute_model(education, :name_organization) %>:</i></strong><br />
-      <%= education.name_organization %>
+      <%= strip_tags education.name_organization %>
     </p>
     <p>
       <strong><i><%= attribute_model(education, :degree) %>:</i></strong>
-      <%= education.degree %>
+      <%= strip_tags education.degree %>
     </p>
     <p>
       <strong><i><%= attribute_model(education, :field_of_study) %>:</i></strong>
-      <%= education.field_of_study %>
+      <%= strip_tags education.field_of_study %>
     </p>
     <p>
       <strong><i><%= attribute_model(education, :date_of_end) %>:</i></strong>
