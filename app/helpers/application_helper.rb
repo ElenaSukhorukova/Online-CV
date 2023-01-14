@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def full_title(page_title = '')
-    base_title = t('page.site_name')
+    base_title = t('site_name')
     page_title ? "#{page_title} | #{base_title}" : base_title.to_s
   end
 
