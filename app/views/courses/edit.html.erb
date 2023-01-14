@@ -1,6 +1,6 @@
 <%= turbo_frame_tag dom_id(@course) do %>
   <div class='my-4 mx-4'>
-    <h3 class='md-4'><%= t('page.edit', model: i18n_model_name(@course)) %></h3>
+    <h3 class='md-4'><%= t('user.show.title_edit', model: i18n_model_name(@course)) %></h3>
     <%= render partial: 'form', locals: { model: @course, method: :put } %>
   </div>
 <% end %>

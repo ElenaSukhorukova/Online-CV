@@ -1,9 +1,10 @@
 <%= simple_form_for model, method: method do |f| %>
   <%= f.input :coursename %>
   <%= f.input :description %>
-  <%= f.input :date_of_end, as: :date, start_year: Date.today.year - 60,
-                                       end_year: Date.today.year,
-                                       order: [ :day, :month, :year] %>
+  <%= f.input :date_of_end, as: :date, 
+                            start_year: Date.today.year - 60,
+                            end_year: Date.today.year,
+                            order: [ :day, :month, :year] %>
   <%= f.input :locale, as: :radio_buttons, 
                        collection: Education::VALID_LOCALES, 
                        item_wrapper_class: 'inline' %>

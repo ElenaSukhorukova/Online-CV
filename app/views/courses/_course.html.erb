@@ -1,12 +1,12 @@
-<article class='col line my-4'>
+<article class='col my-4'>
   <%= turbo_frame_tag dom_id(course) do %>
     <p>
       <strong><i><%= attribute_model(course, :coursename) %>:</i></strong> 
-      <%= course.coursename %>
+      <%= strip_tags course.coursename %>
     </p>
     <p>
     <strong><i><%= attribute_model(course, :description) %>:</i></strong>
-      <%= simple_format course.description %>
+      <%= simple_format course.description, class: 'text-justify' %>
     </p>
     <p>
       <strong><i><%= attribute_model(course, :date_of_end) %>:</i></strong>
