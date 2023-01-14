@@ -1,12 +1,12 @@
-<article class='col line my-4'>
+<article class='col my-4'>
   <%= turbo_frame_tag dom_id(experience) do %>
     <p>
       <strong><i><%= attribute_model(experience, :employer) %>:</i></strong>
-      <%= experience.employer %>
+      <%= strip_tags experience.employer %>
     </p>
     <p>
       <strong><i><%= attribute_model(experience, :position) %>:</i></strong>
-      <%= experience.position %>
+      <%= strip_tags experience.position %>
     </p>
     <p>
       <strong><i><%= attribute_model(experience, :date_of_begin) %>:</i></strong>
@@ -14,11 +14,11 @@
     </p>
     <p>
       <strong><i><%= attribute_model(experience, :date_of_end) %>:</i></strong>
-      <%= experience.date_of_end.blank? ? t('page.blank_yaer_ending_experience') : I18n.l(experience.date_of_end, format: '%B %Y') %>
+      <%= experience.date_of_end.blank? ? t('user.show.blank_yaer_ending_experience') : I18n.l(experience.date_of_end, format: '%B %Y') %>
     </p>
     <p>
       <strong><i><%= attribute_model(experience, :description) %>:</i></strong><br />
-      <%= simple_format experience.description %>
+      <%= simple_format experience.description, class: 'text-justify' %>
     </p>
     <%= link_to t('link.edit', model: i18n_model_name(experience).downcase), edit_experience_path(experience),
     class: "btn btn-outline-dark mb-4 mx-1" %>
