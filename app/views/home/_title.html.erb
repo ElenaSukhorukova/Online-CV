@@ -6,8 +6,8 @@
           PHOTO
         </div>
         <div class='col-6 text-start'>
-          <h1 class='full_name'><%= @personal_details.capitalize_full_name %></h1>
-          <h1 class='position'><%= @personal_details.position %></h1>
+          <h1 class='full_name'><%= strip_tags @personal_details.capitalize_full_name %></h1>
+          <h1 class='position'><%= strip_tags @personal_details.position %></h1>
         </div>
         <div class='col-3 contact text-end mt-4'>
           <p>

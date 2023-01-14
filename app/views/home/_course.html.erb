@@ -1,10 +1,8 @@
 <article>
-  <h4><%= course.coursename %>
+  <h4><%= strip_tags course.coursename %>
     <span class='title'>
       (<%= course.date_of_end.strftime('%Y') %>)
     </span>
   </h4>
-  <p class='justify'>
-    <%= simple_format course.description %>
-  </p>
+    <%= simple_format course.description, class: 'text-justify' %>
 </article>

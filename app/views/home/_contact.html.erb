@@ -1,6 +1,6 @@
 <p class='contact'>
   <i class="bi bi-geo-alt-fill"></i>
-  <%= @contact.address %>
+  <%= strip_tags @contact.address %>
 </p>
 <p class='contact'>         
   <%= link_to("#{@contact.linkedin}", class: "btn btn-outline-dark mx-1", target: :_blank) do %>

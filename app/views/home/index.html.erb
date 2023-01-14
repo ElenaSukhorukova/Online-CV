@@ -25,7 +25,7 @@
               <h3 class='card-title'><%= i18n_model_name(Education.new) %></h3>
               <div class='card-text'>
                 <%= render partial: 'education', collection: @educations if @educations.try(:any?) %>
-                <%= t('page.blank') unless @educations.try(:any?) %>
+                <%= t('home.blank_data') unless @educations.try(:any?) %>
               </div>
             </div>
           </div>
@@ -35,11 +35,14 @@
             <div class='card-body'>
               <h3 class='card-title'><%= i18n_model_name(Project.new, count: 2) %></h3>
               <div class='card-text'>
-                <%= render partial: 'project', collection: @projects if @projects.try(:any?) %>
-                <%= t('page.blank') unless @projects.try(:any?) %>
-                <div class='my-2'>
-                  <%== pagination(@pagy_experience) %>
-                </div>
+                <% if @projects.try(:any?) %>
+                  <%= render partial: 'project', collection: @projects %>
+                  <div class='my-2'>
+                    <%== pagination(@pagy_experience) %>
+                  </div>
+                <% else %>
+                  <%= t('home.blank_data') %>
+                <% end%>
               </div>
             </div>
           </div>
@@ -48,10 +51,13 @@
           <div class="col p-3 border bg-light main_body card">
             <div class='card-body'>
               <h3 class='card-title'><%= attribute_model(PersonalDetail.new, :about) %></h3>
-              <div class='card-text'>
-                <%= render 'about' if @personal_details.present? %>
-                <%= t('page.blank') unless @personal_details.try(:any?) %>
-              </div>
+              <% if @personal_details.present? %>
+                <div class='card-text'>
+                  <%= render 'about' %>
+                </div>
+              <% else %>
+                <%= t('home.blank_data') %>
+              <% end%>
             </div>
           </div>
         </section>
@@ -61,7 +67,7 @@
           <div class="col p-3 border bg-light main_body card">
             <div class='card-text'>
               <%= render 'contact' if @contact.present? %>
-              <%= t('page.blank') unless @contact.try(:any?) %>
+              <%= t('home.blank_data') unless @contact.try(:any?) %>
             </div>
           </div>
         </section>
@@ -70,11 +76,14 @@
             <div class='card-body'>
               <h3 class='card-title'><%= i18n_model_name(Skill.new, count: 2) %></h3>
               <div class='card-text'>
-                <div class='my-2'>
-                  <%== pagination(@pagy_skill) %>
-                </div>
-                <%= render partial: 'skill', collection: @skills if @skills.try(:any?) %>
-                <%= t('page.blank') unless @skills.try(:any?) %>
+                <% if @skills.try(:any?) %>
+                  <div class='my-2'>
+                    <%== pagination(@pagy_skill) %>
+                  </div>
+                  <%= render partial: 'skill', collection: @skills %>
+                <% else %>
+                  <%= t('home.blank_data') %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -84,10 +93,16 @@
             <div class='card-body'>
               <h3 class='card-title'><%= i18n_model_name(Course.new, count: 2) %></h3>
               <div class='card-text'>
-                <%= render partial: 'course', collection: @courses if @courses.try(:any?) %>
-                <%= t('page.blank') unless @courses.try(:any?) %>
+                <% if @courses.try(:any?) %>
+                  <div class='my-2'>
+                    <%== pagination(@pagy_course) %>
+                  </div>
+                  <%= render partial: 'course', collection: @courses %>
+                <% else %>
+                  <%= t('home.blank_data') %>
+                <% end %>
               </div>
-            </div>
+            </div>    
           </div>
         </section>
       </div>

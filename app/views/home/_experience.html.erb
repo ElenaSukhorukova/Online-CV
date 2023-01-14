@@ -1,15 +1,15 @@
 <article>
-  <h4><%= experience.position %>
+  <h4><%= strip_tags experience.position %>
     <span class='title'>
-      <%= experience.employer %>
+      <%= strip_tags experience.employer %>
       (
         <%= I18n.l(experience.date_of_begin, format: '%B %Y') %> -
-        <%= experience.date_of_end.blank? ? t('page.blank_yaer_ending_experience') : 
+        <%= experience.date_of_end.blank? ? t('user.show.blank_yaer_ending_experience') : 
                                             I18n.l(experience.date_of_end, format: '%B %Y') %>
       )
     </span>
   </h4>
   <p>
-    <%= simple_format experience.description %>
+    <%= simple_format experience.description, class: 'text-justify' %>
   </p>
 </article>

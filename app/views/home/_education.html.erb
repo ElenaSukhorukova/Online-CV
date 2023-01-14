@@ -1,11 +1,11 @@
 <article>
-  <h4><%= education.field_of_study %>
+  <h4><%= strip_tags education.field_of_study %>
     <span class='title'>
       ( <%= education.date_of_end.strftime('%Y') %> )
     </span>
   </h4>
   <p>
-    <%= education.name_organization %>
-    <%= education.degree %>
+    <%= strip_tags education.name_organization %>
+    <%= strip_tags education.degree %>
   </p>
 </article>
