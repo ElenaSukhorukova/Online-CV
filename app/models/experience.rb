@@ -7,12 +7,12 @@ class Experience < ApplicationRecord
   validates :date_of_begin, format: { with: /\d{4}-\d{2}-\d{2}/ }
 
   validates :date_of_end, allow_blank: true, format: { with: /\d{4}-\d{2}-\d{2}/ }
-  validate :check_date
+  validate :check_date, if: -> { date_of_end.present? }
 
   def check_date
     return unless date_of_begin.year > date_of_end.year
 
-    errors.add(:date_of_end, t('activerecord.errors.models.experiences.attributes.date_of_end.wrong_date'))
+    errors.add(:date_of_end, :wrong_date)
   end
 
   belongs_to :user
