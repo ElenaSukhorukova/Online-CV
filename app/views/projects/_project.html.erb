@@ -1,7 +1,7 @@
-<article class='col line my-4'>
+<article class='col my-4'>
   <%= turbo_frame_tag dom_id(project) do %>
     <p class='project_title'>
-      <strong><i><%= project.title %></i></strong><br />
+      <strong><i><%= strip_tags project.title %></i></strong><br />
     </p>
     <p>
       <% unless project.site.blank? %>
@@ -14,7 +14,7 @@
       <%= link_to project.github, "#{project.github}", class: 'text-dark text-decoration-none', target: :_blank %>
     </p>
     <p><strong><i><%= attribute_model(project, :description) %></i></strong>:</p>
-    <p><%= project.description %></p>
+    <p class='taxt-justify'><%= project.description %></p>
     <%# if project.previews.attached? %>
       <%# project.previews.each do |img| %>
       <%# <div class='img_block'> %>
