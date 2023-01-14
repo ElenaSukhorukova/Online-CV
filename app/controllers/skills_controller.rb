@@ -14,9 +14,8 @@ class SkillsController < ApplicationController
     @skill = @user.skills.build skill_params
 
     if @skill.save
-      redirect_to user_path,
-                  success: I18n.t('flash.new',
-                                  model: flash_locale(@skill))
+      redirect_to user_path, success: t('flash.new',
+                                        model: flash_locale(@skill))
     end
 
     render :new, status: :unprocessable_entity
@@ -24,9 +23,8 @@ class SkillsController < ApplicationController
 
   def update
     if @skill.update skill_params
-      redirect_to user_path,
-                  success: I18n.t('flash.update',
-                                  model: flash_locale(@skill))
+      redirect_to user_path, success: t('flash.update',
+                                        model: flash_locale(@skill))
     end
 
     render :edit, status: :unprocessable_entity
@@ -35,15 +33,14 @@ class SkillsController < ApplicationController
   def destroy
     return unless @skill.destroy
 
-    redirect_to user_path,
-                success: I18n.t('flash.destroy',
-                                model: flash_locale(@skill))
+    redirect_to user_path, success: t('flash.destroy',
+                                      model: flash_locale(@skill))
   end
 
   private
 
   def define_skill!
-    @skill = Skill.find(params[:id])
+    @skill = Skill.find params[:id]
   end
 
   def skill_params

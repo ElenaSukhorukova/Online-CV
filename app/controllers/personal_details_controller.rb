@@ -15,9 +15,8 @@ class PersonalDetailsController < ApplicationController
     @personal_detail = @user.personal_details.build personal_detail_params
 
     if @personal_detail.save
-      redirect_to user_path,
-                  success: I18n.t('flash_plural.new',
-                                  model: flash_locale(@personal_detail))
+      redirect_to user_path, success: t('flash_plural.new',
+                                        model: flash_locale(@personal_detail))
     end
 
     render :new, status: :unprocessable_entity
@@ -25,9 +24,8 @@ class PersonalDetailsController < ApplicationController
 
   def update
     if @personal_detail.update personal_detail_params
-      redirect_to user_path,
-                  success: I18n.t('flash_plural.update',
-                                  model: flash_locale(@personal_detail))
+      redirect_to user_path, success: t('flash_plural.update',
+                                      model: flash_locale(@personal_detail))
     end
 
     render :edit, status: :unprocessable_entity
@@ -36,9 +34,8 @@ class PersonalDetailsController < ApplicationController
   def destroy
     return unless @personal_detail.destroy
 
-    redirect_to user_path,
-                success: I18n.t('flash_plural.destroy',
-                                model: flash_locale(@personal_detail))
+    redirect_to user_path, success: t('flash_plural.destroy',
+                                      model: flash_locale(@personal_detail))
   end
 
   private
@@ -48,6 +45,7 @@ class PersonalDetailsController < ApplicationController
   end
 
   def personal_detail_params
-    params.require(:personal_detail).permit(:photo, :full_name, :position, :about, :locale)
+    params.require(:personal_detail)
+          .permit(:photo, :full_name, :position, :about, :locale, :photo)
   end
 end

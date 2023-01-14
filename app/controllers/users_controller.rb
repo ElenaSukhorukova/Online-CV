@@ -19,11 +19,11 @@ class UsersController < ApplicationController
 
   def define_variables!
     @contacts = Contact.one_record
-    @courses = Course.meny_records
+    @pagy_course, @courses = pagy Course.meny_records, items: 3, page_param: :pagy_course
     @educations = Education.meny_records
-    @experiences = Experience.meny_records
+    @pagy_experience, @experiences = pagy Experience.meny_records, items: 2, page_param: :pagy_experience
     @personal_details = PersonalDetail.one_record
-    @projects = Project.meny_records
-    @skills = Skill.meny_records
+    @pagy_project, @projects = pagy Project.meny_records, items: 2, page_param: :pagy_project
+    @pagy_skill, @skills = pagy Skill.meny_records, items: 3, page_param: :pagy_skill
   end
 end

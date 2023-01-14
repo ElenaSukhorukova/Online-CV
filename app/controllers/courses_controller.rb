@@ -14,18 +14,17 @@ class CoursesController < ApplicationController
     @course = @user.courses.build course_params
 
     if @course.save
-      redirect_to user_path,
-                  success: I18n.t('flash.new',
-                                  model: flash_locale(@course))
+      redirect_to user_path, success: t('flash.new',
+                                        model: flash_locale(@course))
     end
+
     render :new, status: :unprocessable_entity
   end
 
   def update
     if @course.update course_params
-      redirect_to user_path,
-                  success: I18n.t('flash.update',
-                                  model: flash_locale(@course))
+      redirect_to user_path, success: t('flash.update',
+                                      model: flash_locale(@course))
     end
 
     render :edit, status: :unprocessable_entity
@@ -34,9 +33,8 @@ class CoursesController < ApplicationController
   def destroy
     return unless @course.destroy
 
-    redirect_to user_path,
-                success: I18n.t('flash.destroy',
-                                model: flash_locale(@course))
+    redirect_to user_path, success: t('flash.destroy',
+                                      model: flash_locale(@course))
   end
 
   private
@@ -49,3 +47,4 @@ class CoursesController < ApplicationController
     params.require(:course).permit(:coursename, :description, :date_of_end, :locale)
   end
 end
+

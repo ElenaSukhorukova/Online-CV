@@ -14,9 +14,8 @@ class EducationsController < ApplicationController
     @education = @user.educations.build education_params
 
     if @education.save
-      redirect_to user_path,
-                  success: I18n.t('flash.new',
-                                  model: flash_locale(@education))
+      redirect_to user_path, success: t('flash.new',
+                                        model: flash_locale(@education))
     end
 
     render :new, status: :unprocessable_entity
@@ -24,9 +23,8 @@ class EducationsController < ApplicationController
 
   def update
     if @education.update education_params
-      redirect_to user_path,
-                  success: I18n.t('flash.update',
-                                  model: flash_locale(@education))
+      redirect_to user_path, success: t('flash.update',
+                                        model: flash_locale(@education))
     end
 
     render :edit, status: :unprocessable_entity
@@ -35,9 +33,8 @@ class EducationsController < ApplicationController
   def destroy
     return unless @education.destroy
 
-    redirect_to user_path,
-                success: I18n.t('flash.destroy',
-                                model: flash_locale(@education))
+    redirect_to user_path, success: t('flash.destroy',
+                                      model: flash_locale(@education))
   end
 
   private

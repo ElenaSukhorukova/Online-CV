@@ -14,9 +14,8 @@ class ExperiencesController < ApplicationController
     @experience = @user.experiences.build experience_params
 
     if @experience.save
-      redirect_to user_path,
-                  success: I18n.t('flash.new',
-                                  model: flash_locale(@experience))
+      redirect_to user_path, success: t('flash.new',
+                                      model: flash_locale(@experience))
     end
 
     render :new, status: :unprocessable_entity
@@ -24,9 +23,8 @@ class ExperiencesController < ApplicationController
 
   def update
     if @experience.update experience_params
-      redirect_to user_path,
-                  success: I18n.t('flash.update',
-                                  model: flash_locale(@experience))
+      redirect_to user_path, success: t('flash.update',
+                                        model: flash_locale(@experience))
     end
 
     render :edit, status: :unprocessable_entity
@@ -35,9 +33,8 @@ class ExperiencesController < ApplicationController
   def destroy
     return unless @experience.destroy
 
-    redirect_to user_path,
-                success: I18n.t('flash.destroy',
-                                model: flash_locale(@experience))
+    redirect_to user_path, success: t('flash.destroy',
+                                      model: flash_locale(@experience))
   end
 
   private
