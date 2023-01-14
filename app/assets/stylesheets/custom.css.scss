@@ -1,8 +1,3 @@
-// a card position on admin page
-.card-position {
-  width: 48%;
-}
-
 // set footer
 * {
 	margin: 0;
@@ -11,7 +6,8 @@
 html,
 body {
 	height: 100%;
-	background-color: #DAE3E7;
+	background-color: #DAE3E7 !important;
+	font-family: 'Montserrat', sans-serif !important;
 }
 
 .wrapper {
@@ -26,12 +22,6 @@ body {
 	flex: 0 0 auto;
 }
 // set footer end
-
-// line to split section on admin page
-
-.line {
-	border-bottom: 2px dashed #ccc;
-}
 
 // title for a project
 .project_title {
@@ -78,50 +68,52 @@ body {
 .main_body {
 	margin: 15px;
 
-	body {
+}
+body .main_body {
 		font-family: 'Lato', arial, sans-serif;
 	}
-	p {
-		margin: 15px;
-		font-family: 'Montserrat', sans-serif;	
-		color: #434343;
-		font-size: 16px;
-	}
-
-	h1, h2, h3 {
-		margin-top: 0;
-    margin-bottom: 30px;
-    color: #545e69;
-    font-size: 36px;
-	}
-
-	h4, h5, h6 {
-		font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    color: #778492;
-	}
-
-	.title {
-		font-size: 16px;
-		color: #999;
-    font-weight: normal;
-	}
-
-	a {
-    color: #3AAA64;
-		text-decoration: none;
-	}
-
-	a:hover {
-    text-decoration: underline;
-    color: #2d844e;
-	}
-
-	a:active, a:hover {
-    outline: 0;
-		text-decoration: underline;
-	}
+.main_body p {
+	margin: 15px;
+	font-family: 'Montserrat', sans-serif;	
+	color: #434343;
+	font-size: 16px;
 }
+
+.main_body h1, h2, h3 {
+	margin-top: 0;
+	margin-bottom: 30px;
+	color: #545e69;
+	font-size: 36px;
+}
+
+.main_body h4, h5, h6 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	color: #778492;
+}
+
+.main_body .title {
+	font-size: 16px;
+	color: #999;
+	font-weight: normal;
+}
+
+.main_body a {
+	color: #3AAA64;
+	text-decoration: none;
+}
+
+.main_body a:hover {
+	text-decoration: underline;
+	color: #2d844e;
+}
+
+.main_body a:active, a:hover {
+	outline: 0;
+	text-decoration: underline;
+}
+
+// Menu
 
 nav {
 	border-bottom: 1px solid #b4bbc1;
@@ -137,12 +129,34 @@ nav {
 
 // text align
 
-.justify {
-  text-align: justify;
+.text-justify {
+  text-align: justify !important;
 }
 
 // skill-admin
 
 .skill-admin {
 	margin-left:21px
+}
+
+// admin page
+.col.first-item {
+	margin-left: 10px;
+}
+
+.col.second-item {
+	margin-right: -10px;
+}
+
+.card.box {
+	display: inline-block;
+	min-height: 100%;
+  width: 100%;
+}
+
+// custom tunes of pagination
+
+.page-link.active, .active > .page-link {
+	background-color: MediumSeaGreen !important;
+	border-color: MediumSeaGreen !important;
 }
