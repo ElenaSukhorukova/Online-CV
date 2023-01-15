@@ -7,7 +7,7 @@ RSpec.describe Project, type: :model do
     expect(project.title).to be_an_instance_of(String)
   end
 
-  describe 'validation', :last do
+  describe 'validation' do
     it 'returns true for the title'do
       expect(project.title.present?).to be true
     end
@@ -42,7 +42,7 @@ RSpec.describe Project, type: :model do
     end
   end
   
-  describe 'association', :last do
+  describe 'association' do
     it 'belongs a user' do
       expect(project.user).to be_an_instance_of(User)
     end
