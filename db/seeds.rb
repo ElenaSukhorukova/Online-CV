@@ -63,7 +63,7 @@ unless PersonalDetail.where(locale: 'ru').any?
 end
 
 (8 - Skill.where(locale: 'en').count).times do
-  skill = Faker::Job.key_skill
+  skillname = Faker::Job.key_skill
   description = Faker::Lorem.paragraph(sentence_count: 3, supplemental: true, random_sentences_to_add: 4)
   locale = 'en'
   user = User.take
@@ -72,7 +72,7 @@ end
 end
 
 (8 - Skill.where(locale: 'ru').count).times do |index|
-  skill = "Навык #{index}"
+  skillname = "Навык #{index}"
   description = 'Не длинное описание навыка. Где получен. Какой уровень'
   locale = 'ru'
   user = User.take
