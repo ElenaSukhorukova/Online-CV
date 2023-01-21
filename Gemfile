@@ -59,6 +59,8 @@ gem 'pagy', '~> 5.10', '>= 5.10.1'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'simple_form'
 gem 'valid_email2', '~> 4.0.4'
+gem 'sidekiq', '~> 7.0.2'
+gem 'sidekiq-scheduler', '~> 4.0', '>= 4.0.3'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

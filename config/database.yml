@@ -70,6 +70,4 @@ test:
 #
 production:
   <<: *default
-  database: Online_CV_production
-  username: Online_CV
-  password: <%= ENV["ONLINE_CV_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
