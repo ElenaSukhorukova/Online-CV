@@ -3,6 +3,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :define_variables!
+  before_action :authorize_user!
+  after_action :verify_authorized
 
   def show
     @user = User.first
@@ -25,5 +27,9 @@ class UsersController < ApplicationController
     @personal_details = PersonalDetail.one_record
     @pagy_project, @projects = pagy Project.meny_records, items: 2, page_param: :pagy_project
     @pagy_skill, @skills = pagy Skill.meny_records, items: 3, page_param: :pagy_skill
+  end
+
+  def authorize_user!
+    authorize(@user || User)
   end
 end
