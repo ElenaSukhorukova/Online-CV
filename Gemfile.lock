@@ -91,6 +91,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     concurrent-ruby (1.1.10)
+    connection_pool (2.3.0)
     crass (1.0.6)
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
@@ -115,6 +116,8 @@ GEM
       request_store (>= 1.0)
       ruby2_keywords
     erubi (1.12.0)
+    et-orbi (1.2.7)
+      tzinfo
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -125,6 +128,9 @@ GEM
     ffi (1.15.5)
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
+    fugit (1.8.1)
+      et-orbi (~> 1, >= 1.2.7)
+      raabro (~> 1.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -181,6 +187,7 @@ GEM
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     racc (1.6.2)
     rack (2.2.5)
     rack-test (2.0.2)
@@ -269,6 +276,8 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    rufus-scheduler (3.8.2)
+      fugit (~> 1.1, >= 1.1.6)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -283,6 +292,15 @@ GEM
       websocket (~> 1.0)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
+    sidekiq (6.5.8)
+      connection_pool (>= 2.2.5, < 3)
+      rack (~> 2.0)
+      redis (>= 4.5.0, < 5)
+    sidekiq-scheduler (4.0.3)
+      redis (>= 4.2.0)
+      rufus-scheduler (~> 3.2)
+      sidekiq (>= 4, < 7)
+      tilt (>= 1.4.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -361,6 +379,8 @@ DEPENDENCIES
   sassc-rails
   selenium-webdriver
   shoulda-matchers (~> 5.3.0)
+  sidekiq (~> 6)
+  sidekiq-scheduler (~> 4)
   simple_form
   sprockets-rails
   stimulus-rails
