@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include ErrorHandling
   include ApplicationHelper
   include Internationalization
+  include Authorization
   include Pagy::Backend
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :define_user
@@ -17,6 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
   def define_user
-    @user = User.first
+    @user = current_user
   end
 end
