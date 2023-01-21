@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_11_095631) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_21_131102) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,83 +43,83 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_095631) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.text "address"
-    t.string "email"
-    t.string "phone"
-    t.string "linkedin"
-    t.string "github"
-    t.string "telegram"
-    t.string "locale"
-    t.bigint "user_id"
+    t.text "address", null: false
+    t.string "email", null: false
+    t.string "phone", null: false
+    t.string "linkedin", null: false
+    t.string "github", null: false
+    t.string "telegram", null: false
+    t.string "locale", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string "coursename"
-    t.text "description"
-    t.date "date_of_end"
-    t.string "locale"
-    t.bigint "user_id"
+    t.string "coursename", null: false
+    t.text "description", null: false
+    t.date "date_of_end", null: false
+    t.string "locale", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
   create_table "educations", force: :cascade do |t|
-    t.string "name_organization"
-    t.string "degree"
-    t.text "field_of_study"
-    t.date "date_of_end"
-    t.string "locale"
-    t.bigint "user_id"
+    t.string "name_organization", null: false
+    t.string "degree", null: false
+    t.text "field_of_study", null: false
+    t.date "date_of_end", null: false
+    t.string "locale", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_educations_on_user_id"
   end
 
   create_table "experiences", force: :cascade do |t|
-    t.string "employer"
-    t.string "position"
-    t.date "date_of_begin"
+    t.string "employer", null: false
+    t.string "position", null: false
+    t.date "date_of_begin", null: false
     t.date "date_of_end"
-    t.text "description"
-    t.string "locale"
-    t.bigint "user_id"
+    t.text "description", null: false
+    t.string "locale", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 
   create_table "personal_details", force: :cascade do |t|
-    t.string "full_name"
-    t.string "position"
-    t.text "about"
-    t.string "locale"
-    t.bigint "user_id"
+    t.string "full_name", null: false
+    t.string "position", null: false
+    t.text "about", null: false
+    t.string "locale", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_personal_details_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.string "site"
-    t.string "github"
-    t.text "description"
-    t.string "locale"
-    t.bigint "user_id"
+    t.string "github", null: false
+    t.text "description", null: false
+    t.string "locale", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
-    t.string "skillname"
+    t.string "skillname", null: false
     t.text "description"
-    t.string "locale"
-    t.bigint "user_id"
+    t.string "locale", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_skills_on_user_id"
@@ -134,8 +134,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_095631) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "locale", default: "en"
+    t.integer "role", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role"], name: "index_users_on_role"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
