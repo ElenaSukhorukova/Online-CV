@@ -4,7 +4,7 @@ unless User.first
   email = 'email@email.com'
   password = 'test123'
 
-  User.create email: email, password: password
+  User.create! email: email, password: password
 end
 
 unless Contact.where(locale: 'en').any?
@@ -17,7 +17,7 @@ unless Contact.where(locale: 'en').any?
   locale = 'en'
   user = User.take
 
-  Contact.create address: address, email: email, phone: phone, linkedin: linkedin,
+  Contact.create! address: address, email: email, phone: phone, linkedin: linkedin,
                  github: github, telegram: telegram, locale: locale, user: user
 end
 
@@ -31,7 +31,7 @@ unless Contact.where(locale: 'ru').any?
   locale = 'ru'
   user = User.take
 
-  Contact.create address: address, email: email, phone: phone, linkedin: linkedin,
+  Contact.create! address: address, email: email, phone: phone, linkedin: linkedin,
                  github: github, telegram: telegram, locale: locale, user: user
 end
 
@@ -42,7 +42,7 @@ unless PersonalDetail.where(locale: 'en').any?
   locale = 'en'
   user = User.take
 
-  PersonalDetail.create full_name: full_name, position: position,
+  PersonalDetail.create! full_name: full_name, position: position,
                         about: about, locale: locale, user: user
 end
 
@@ -58,7 +58,7 @@ unless PersonalDetail.where(locale: 'ru').any?
   locale = 'ru'
   user = User.take
 
-  PersonalDetail.create full_name: full_name, position: position,
+  PersonalDetail.create! full_name: full_name, position: position,
                         about: about, locale: locale, user: user
 end
 
@@ -68,7 +68,7 @@ end
   locale = 'en'
   user = User.take
 
-  Skill.create skillname: skill, description: description, user: user, locale: locale
+  Skill.create! skillname: skill, description: description, user: user, locale: locale
 end
 
 (8 - Skill.where(locale: 'ru').count).times do |index|
@@ -77,7 +77,7 @@ end
   locale = 'ru'
   user = User.take
 
-  Skill.create skillname: skill, description: description, user: user, locale: locale
+  Skill.create! skillname: skill, description: description, user: user, locale: locale
 end
 
 (6 - Course.where(locale: 'en').count).times do
@@ -87,18 +87,18 @@ end
   locale = 'en'
   user = User.take
 
-  Course.create coursename: coursename, description: description,
+  Course.create! coursename: coursename, description: description,
                 date_of_end: date_of_end, locale: locale, user: user
 end
 
 (6 - Course.where(locale: 'ru').count).times do |index|
-  coursename = "Курс № #{index+1}"
+  coursename = "Курс № #{index + 1}"
   description = 'Не длинное описание курса. Какие технологии были изучены.'
   date_of_end = Faker::Date.backward(days: 14)
   locale = 'ru'
   user = User.take
 
-  Course.create coursename: coursename, description: description,
+  Course.create! coursename: coursename, description: description,
                 date_of_end: date_of_end, locale: locale, user: user
 end
 
@@ -110,7 +110,7 @@ end
   locale = 'en'
   user = User.take
 
-  Education.create name_organization: name_organization, degree: degree,
+  Education.create! name_organization: name_organization, degree: degree,
                    field_of_study: field_of_study, date_of_end: date_of_end,
                    locale: locale, user: user
 end
@@ -123,7 +123,7 @@ end
   locale = 'ru'
   user = User.take
 
-  Education.create name_organization: name_organization, degree: degree,
+  Education.create! name_organization: name_organization, degree: degree,
                    field_of_study: field_of_study, date_of_end: date_of_end,
                    locale: locale, user: user
 end
@@ -137,7 +137,7 @@ end
   locale = 'en'
   user = User.take
 
-  Experience.create employer: employer, position: position, description: description,
+  Experience.create! employer: employer, position: position, description: description,
                     date_of_begin: date_of_begin, date_of_end: date_of_end,
                     locale: locale, user: user
 end
@@ -152,7 +152,7 @@ end
   locale = 'ru'
   user = User.take
 
-  Experience.create employer: employer, position: position, description: description,
+  Experience.create! employer: employer, position: position, description: description,
                     date_of_begin: date_of_begin, date_of_end: date_of_end,
                     locale: locale, user: user
 end
@@ -165,18 +165,18 @@ end
   locale = 'en'
   user = User.take
 
-  Project.create title: title, site: site, github: github, 
-                description: description, locale: locale, user: user
+  Project.create! title: title, site: site, github: github,
+                 description: description, locale: locale, user: user
 end
 
 (7 - Project.where(locale: 'ru').count).times do |index|
-  title = "Название проекта #{index+1}"
+  title = "Название проекта #{index + 1}"
   site = 'https://github.com/'
   github = 'https://github.com/'
   description = 'Краткое описание проекта. Использованные технологии. '
   locale = 'ru'
   user = User.take
 
-  Project.create title: title, site: site, github: github, 
-                  description: description, locale: locale, user: user
+  Project.create! title: title, site: site, github: github,
+                 description: description, locale: locale, user: user
 end
