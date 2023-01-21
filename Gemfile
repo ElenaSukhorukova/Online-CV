@@ -48,7 +48,7 @@ gem 'bootsnap', require: false
 gem 'sassc-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
+gem 'image_processing', '~> 1.2'
 
 gem 'cssbundling-rails', '~> 1.1'
 gem 'devise'
@@ -56,17 +56,17 @@ gem 'devise-i18n'
 gem 'draper', '~> 4.0'
 gem 'jsbundling-rails', '~> 1.0'
 gem 'pagy', '~> 5.10', '>= 5.10.1'
+gem 'pundit', '~> 2.3.0'
 gem 'rails-i18n', '~> 7.0.0'
+gem 'sidekiq', '~> 7.0.2'
 gem 'simple_form'
 gem 'valid_email2', '~> 4.0.4'
-gem 'sidekiq', '~> 6'
-gem 'sidekiq-scheduler', '~> 4'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   # gem for ENV
-  gem 'faker', '~> 3'
+  gem 'faker', '~> 2.20'
   gem 'rubocop', '~> 1.40', require: false
   gem 'rubocop-performance', '~> 1.15', require: false
   gem 'rubocop-rails', '~> 2.17', require: false
@@ -81,17 +81,18 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  gem 'figaro'
+
   gem 'bullet', '~> 7.0.7'
+  gem 'figaro'
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
+  gem 'factory_bot_rails', '~> 6.2.0'
   gem 'rspec-rails', '~> 6.0.1'
-  gem 'shoulda-matchers', '~> 5.3.0'
-  gem "factory_bot_rails", '~> 6.2.0'
   gem 'rubocop-rspec', '~> 2.16.0', require: false
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 5.3.0'
+  gem 'webdrivers'
 end
