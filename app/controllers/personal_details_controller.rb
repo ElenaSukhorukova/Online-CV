@@ -25,7 +25,7 @@ class PersonalDetailsController < ApplicationController
   def update
     if @personal_detail.update personal_detail_params
       redirect_to user_path, success: t('flash_plural.update',
-                                      model: flash_locale(@personal_detail))
+                                        model: flash_locale(@personal_detail))
     end
 
     render :edit, status: :unprocessable_entity

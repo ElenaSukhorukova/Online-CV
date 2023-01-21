@@ -15,7 +15,7 @@ class ContactsController < ApplicationController
 
     if @contact.save
       return redirect_to user_path, success: t('flash_plural.new',
-                                              model: flash_locale(@contact))
+                                               model: flash_locale(@contact))
     end
 
     render :new, status: :unprocessable_entity
@@ -24,7 +24,7 @@ class ContactsController < ApplicationController
   def update
     if @contact.update contact_params
       return redirect_to user_path, success: t('flash_plural.update',
-                                                model: flash_locale(@contact))
+                                               model: flash_locale(@contact))
     end
 
     render :edit, status: :unprocessable_entity
@@ -34,7 +34,7 @@ class ContactsController < ApplicationController
     return unless @contact.destroy
 
     redirect_to user_path, success: t('flash_plural.destroy',
-                                     model: flash_locale(@contact))
+                                      model: flash_locale(@contact))
   end
 
   private

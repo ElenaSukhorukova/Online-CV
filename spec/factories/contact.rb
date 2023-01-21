@@ -1,6 +1,7 @@
-FactoryBot.define do
+# frozen_string_literal: true
 
-  factory :contact_en, class: Contact do
+FactoryBot.define do
+  factory :contact_en, class: 'Contact' do
     user { User.take || create(:user) }
     address { Faker::Address.full_address }
     email { 'email@email.com' }
@@ -11,7 +12,7 @@ FactoryBot.define do
     locale { 'en' }
   end
 
-  factory :connect_ru, class: Contact do
+  factory :connect_ru, class: 'Contact' do
     user { User.take || create(:user) }
     address { '147963, Москва, Московская ул., д 3, кв 456' }
     email { 'email@email.com' }

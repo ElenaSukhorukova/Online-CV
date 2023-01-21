@@ -14,18 +14,18 @@ class ProjectsController < ApplicationController
     @project = @user.projects.build(project_params)
 
     if @project.save
-    return redirect_to user_path, success: t('flash.new',
-                                            model: flash_locale(@project))
+      return redirect_to user_path, success: t('flash.new',
+                                               model: flash_locale(@project))
 
     end
-    
+
     render :new, status: :unprocessable_entity
   end
 
   def update
     if @project.update(project_params)
       redirect_to user_path, success: t('flash.update',
-                              model: flash_locale(@project))
+                                        model: flash_locale(@project))
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
   def define_project!
     @project = Project.find params[:id]
   end
-
+  
   def project_params
     params.require(:project)
           .permit(:title, :site, :github, :description, :locale, previews: [])

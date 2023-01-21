@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Skill, type: :model do
+RSpec.describe Skill do
   let(:skill) { create(:skill_en) }
 
   it 'returns a type of skill\'s name' do
@@ -8,7 +10,7 @@ RSpec.describe Skill, type: :model do
   end
 
   describe 'validation' do
-    it 'returns true for the skillname'do
+    it 'returns true for the skillname' do
       expect(skill.skillname.present?).to be true
     end
 
@@ -20,10 +22,10 @@ RSpec.describe Skill, type: :model do
       expect(skill.invalid?).to be true
     end
   end
-  
+
   describe 'association' do
     it 'belongs a user' do
       expect(skill.user).to be_an_instance_of(User)
     end
-  end 
+  end
 end

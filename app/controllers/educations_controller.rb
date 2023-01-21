@@ -41,7 +41,6 @@ class EducationsController < ApplicationController
 
   def find_variable!
     @education = Education.find params[:id]
-    @user = User.first
   end
 
   def education_params

@@ -24,7 +24,7 @@ class CoursesController < ApplicationController
   def update
     if @course.update course_params
       redirect_to user_path, success: t('flash.update',
-                                      model: flash_locale(@course))
+                                        model: flash_locale(@course))
     end
 
     render :edit, status: :unprocessable_entity
@@ -47,4 +47,3 @@ class CoursesController < ApplicationController
     params.require(:course).permit(:coursename, :description, :date_of_end, :locale)
   end
 end
-

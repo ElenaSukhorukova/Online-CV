@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
-  factory :experience_en, class: Experience do
+  factory :experience_en, class: 'Experience' do
     user { User.take || create(:user) }
     employer { Faker::Company.name }
     position { Faker::Job.position }
@@ -9,16 +11,16 @@ FactoryBot.define do
     locale { 'en' }
   end
 
-  factory :experience_ru, class: Experience do
+  factory :experience_ru, class: 'Experience' do
     user { User.take || create(:user) }
-    employer { "Ратодатель" }
-    position { "Должность" }
+    employer { 'Ратодатель' }
+    position { 'Должность' }
     date_of_begin { Faker::Date.backward(days: 30) }
     date_of_end { Faker::Date.backward(days: 2) }
-    description { 
+    description do
       'Длинное описание рабочих обязанностей. <p>Перечень используемых ' \
-      'технологий</p><p>Технология 1</p><p>Технология 2</p><p>Технология 3</p>'
-    }
+        'технологий</p><p>Технология 1</p><p>Технология 2</p><p>Технология 3</p>'
+    end
     locale { 'ru' }
   end
 end

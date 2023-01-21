@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Contact, type: :model do
+RSpec.describe Contact do
   let(:contact) { create(:contact_en) }
 
   it 'returns contact\'s email' do
@@ -19,7 +21,7 @@ RSpec.describe Contact, type: :model do
     end
 
     it 'returns true for the invalid telegram' do
-      invalid_telegram =  %w[https://t.me/test https://google.com/test test@test without_dog].sample
+      invalid_telegram = %w[https://t.me/test https://google.com/test test@test without_dog].sample
       contact.telegram = invalid_telegram
       expect(contact.invalid?).to be true
     end
@@ -36,17 +38,17 @@ RSpec.describe Contact, type: :model do
       contact.linkedin = invalid_linkedin
       expect(contact.invalid?).to be true
     end
-    
-    it 'returns false for the invalid github'do
+
+    it 'returns false for the invalid github' do
       invalid_github = %w[https:site simple_text https//site.com/test].sample
       contact.github = invalid_github
       expect(contact.valid?).to be false
     end
   end
-  
+
   describe 'association' do
     it 'belongs a user' do
       expect(contact.user).to be_an_instance_of(User)
     end
-  end  
+  end
 end

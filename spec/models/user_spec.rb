@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe User do
   let(:user) { create(:user) }
-  
+
   describe 'association', :last do
     it { is_expected.to have_many :contacts }
     it { is_expected.to have_many :courses }
@@ -11,5 +13,5 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many :personal_details }
     it { is_expected.to have_many :projects }
     it { is_expected.to have_many :skills }
-  end 
+  end
 end

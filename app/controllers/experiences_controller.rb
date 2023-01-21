@@ -15,7 +15,7 @@ class ExperiencesController < ApplicationController
 
     if @experience.save
       redirect_to user_path, success: t('flash.new',
-                                      model: flash_locale(@experience))
+                                        model: flash_locale(@experience))
     end
 
     render :new, status: :unprocessable_entity

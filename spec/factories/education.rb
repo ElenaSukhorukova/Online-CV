@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
-  factory :education_en, class: Education do
+  factory :education_en, class: 'Education' do
     user { User.take || create(:user) }
     name_organization { Faker::Educator.university }
     degree { Faker::Educator.degree }
@@ -8,11 +10,11 @@ FactoryBot.define do
     locale { 'en' }
   end
 
-  factory :education_ru, class: Education do
+  factory :education_ru, class: 'Education' do
     user { User.take || create(:user) }
-    name_organization { "Учебное заведение" }
-    degree { "Степень" }
-    field_of_study { "Сфера обучения" }
+    name_organization { 'Учебное заведение' }
+    degree { 'Степень' }
+    field_of_study { 'Сфера обучения' }
     date_of_end { Faker::Date.backward(days: 5) }
     locale { 'ru' }
   end

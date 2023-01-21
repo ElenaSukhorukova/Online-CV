@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Project, type: :model do
+RSpec.describe Project do
   let(:project) { create(:project_en) }
 
   it 'returns a type of experience\'s employer' do
@@ -8,7 +10,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe 'validation' do
-    it 'returns true for the title'do
+    it 'returns true for the title' do
       expect(project.title.present?).to be true
     end
 
@@ -41,13 +43,12 @@ RSpec.describe Project, type: :model do
       expect(project.valid?).to be true
     end
   end
-  
+
   describe 'association' do
     it 'belongs a user' do
       expect(project.user).to be_an_instance_of(User)
     end
 
     it { is_expected.to have_many_attached(:previews) }
-  end 
+  end
 end
-

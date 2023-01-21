@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Education, type: :model do
+RSpec.describe Education do
   let(:education) { create(:education_en) }
 
   it 'returns a type of experience\'s name of the organization' do
@@ -12,10 +14,10 @@ RSpec.describe Education, type: :model do
       expect(education.name_organization.present?).to be true
     end
 
-    it 'returns true for the degree'do
+    it 'returns true for the degree' do
       expect(education.degree.present?).to be true
     end
-    
+
     it 'returns true for the field of the study' do
       expect(education.field_of_study.present?).to be true
     end
@@ -25,8 +27,8 @@ RSpec.describe Education, type: :model do
     end
 
     it 'returns false for the invalid date_of_end' do
-      education.date_of_end =  Date.current + 1.day
-      expect(education.valid?).to be false  
+      education.date_of_end = Date.current + 1.day
+      expect(education.valid?).to be false
     end
   end
 

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Course, type: :model do
+RSpec.describe Course do
   let(:course) { create(:course_en) }
 
   it 'returns a type of course\'s coursename' do
@@ -24,10 +26,10 @@ RSpec.describe Course, type: :model do
       expect(course.invalid?).to be true
     end
   end
-  
+
   describe 'association' do
     it 'belongs a user' do
       expect(course.user).to be_an_instance_of(User)
     end
-  end  
+  end
 end
