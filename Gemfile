@@ -58,7 +58,7 @@ gem 'jsbundling-rails', '~> 1.0'
 gem 'pagy', '~> 5.10', '>= 5.10.1'
 gem 'pundit', '~> 2.3.0'
 gem 'rails-i18n', '~> 7.0.0'
-gem 'sidekiq', '~> 7.0.2'
+gem 'sidekiq', '~> 7.0.8'
 gem 'simple_form'
 gem 'valid_email2', '~> 4.0.4'
 
